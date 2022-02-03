@@ -171,6 +171,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be440e11cbbff2245aebe264311ce830, type: 3}
+--- !u!1 &6015905586396374552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5571825054969940776, guid: be440e11cbbff2245aebe264311ce830,
+    type: 3}
+  m_PrefabInstance: {fileID: 2175189263185571120}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3517057904567035277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6015905586396374552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3325da3e8e6fe4c9585c104e1324e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerType: {fileID: 11400000, guid: ea054df94d2b2d14e8cba0553367a366, type: 2}
+  target: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  searchRadiusOffset: 1
 --- !u!4 &6015905586396374553 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5571825054969940777, guid: be440e11cbbff2245aebe264311ce830,

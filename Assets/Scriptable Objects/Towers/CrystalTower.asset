@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ffca9c7993d7c40bff1c5b0be6b9e4, type: 3}
   m_Name: CrystalTower
   m_EditorClassIdentifier: 
-  towerRange: 5
+  towerRange: 12.46
   towerPrice: 100
   damage: 10
   startingLevel: 1

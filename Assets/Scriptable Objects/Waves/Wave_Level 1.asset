@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e17ff3f3385f78e4f8354ddc9db24241, type: 3}
-  m_Name: Troll
+  m_Script: {fileID: 11500000, guid: f8e21902da55be04089aa37f4e2687e9, type: 3}
+  m_Name: Wave_Level 1
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  enemiesToSpawn:
+  - enemyPrefab: {fileID: 6631455902783997216, guid: 0eecf681bb542354b9cad06cae270244,
+      type: 3}
+    amount: 10

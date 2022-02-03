@@ -1,7 +1,11 @@
 using TowersNoDragons.AI;
 using UnityEngine;
 
-public class Troll : Enemy
+namespace TowersNoDragons.AI
 {
-   
+	public class Troll : Enemy
+	{
+
+	}
 }
+

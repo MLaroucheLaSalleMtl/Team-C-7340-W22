@@ -8,7 +8,7 @@ namespace TowersNoDragons.Towers
 	{
 		protected override void AttackTarget()
 		{
-			throw new System.NotImplementedException();
+			print("crystal tower attack");
 		}
 	}
 }
