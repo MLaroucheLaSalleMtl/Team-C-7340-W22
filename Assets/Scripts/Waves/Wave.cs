@@ -14,11 +14,11 @@ namespace TowersNoDragons.Waves
 		public class EnemiesToSpawn
 		{
 			[SerializeField] private Enemy enemyPrefab = null;
-			[SerializeField] private int amount;
+			[SerializeField] private int amountToSpawn;
 
 			public int GetAmount()
 			{
-				return amount;
+				return amountToSpawn;
 			}
 		}
 

@@ -15,4 +15,7 @@ MonoBehaviour:
   enemiesToSpawn:
   - enemyPrefab: {fileID: 6631455902783997216, guid: 0eecf681bb542354b9cad06cae270244,
       type: 3}
-    amount: 10
+    amountToSpawn: 0
+  - enemyPrefab: {fileID: 6631455902783997216, guid: 0eecf681bb542354b9cad06cae270244,
+      type: 3}
+    amountToSpawn: 0
