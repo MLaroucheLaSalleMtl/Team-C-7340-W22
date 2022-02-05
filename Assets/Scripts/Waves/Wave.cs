@@ -20,11 +20,16 @@ namespace TowersNoDragons.Waves
 			{
 				return amountToSpawn;
 			}
+
+			public Enemy GetEnemy()
+			{
+				return enemyPrefab;
+			}
 		}
 
-		public EnemiesToSpawn GetFirstTypeEnemy() //remove test later
+		public EnemiesToSpawn[] GetEnemiesToSpawns()
 		{
-			return enemiesToSpawn[0];
+			return enemiesToSpawn;
 		}
 
 	}

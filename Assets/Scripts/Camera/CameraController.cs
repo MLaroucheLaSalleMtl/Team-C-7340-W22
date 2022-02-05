@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TowersNoDragons.Input;
 
 //CameraController
-namespace TowersNoDragons.Camera
+namespace TowersNoDragons.Cameras
 {
 	public class CameraController : MonoBehaviour
 	{
@@ -12,8 +10,6 @@ namespace TowersNoDragons.Camera
 		[SerializeField] private float scrollSpeed = 10f;
 		[SerializeField] private Transform cameraTransform = null;
 
-		//TODO: ADD CAMERA BOUNDS!
-		//TODO: ADD ZOOM
 		[Header("Movement Bounds")]
 		[SerializeField] private float max_X = 500f;
 		[SerializeField] private float min_X = -500f;
@@ -25,7 +21,7 @@ namespace TowersNoDragons.Camera
 		[SerializeField] private float maxScrollUp = 500f;
 
 		private InputController InputController;
-		private float horizontal, vertical, scrollValue;
+		private float horizontal, vertical;
 
 		//Camera Rig
 		private Vector3 direction_x = new Vector3();
@@ -35,10 +31,18 @@ namespace TowersNoDragons.Camera
 		//Main Camera
 		private Vector3 newScrollPos = new Vector3();
 
+		//Zoom percentage
+		private float zoomRatio = 0f;
+		public float ZoomRatio { get => zoomRatio; }
+
 		private void Awake()
 		{
-			InputController = InputController.Instance;
 			newScrollPos = cameraTransform.localPosition;
+		}
+
+		private void Start()
+		{
+			InputController = InputController.Instance;
 		}
 
 
@@ -53,17 +57,20 @@ namespace TowersNoDragons.Camera
 
 			newPosition = direction_x + direction_y + transform.position;
 
-			//newPosition.x = Mathf.Clamp(newPosition.x, min_X, max_X);
-			//newPosition.z = Mathf.Clamp(newPosition.z, min_Z, max_Z);
+			//clamp camera movement to bounds
+			newPosition.x = Mathf.Clamp(newPosition.x, min_X, max_X);
+			newPosition.z = Mathf.Clamp(newPosition.z, min_Z, max_Z);
 
 			//Scroll - Main Camera
 			newScrollPos.y += scrollSpeed * Time.deltaTime * InputController.GetScrollDirection();
 
+			//clamp camera zoom to bounds
 			newScrollPos.y = Mathf.Clamp(newScrollPos.y, maxScrollDown, maxScrollUp);
 
 			newScrollPos.z = newScrollPos.y * -1;
 
-
+			//Ratio of the scroll for the enemy UI
+			zoomRatio = (newScrollPos.y - maxScrollDown) / (maxScrollUp - maxScrollDown);
 
 
 		}

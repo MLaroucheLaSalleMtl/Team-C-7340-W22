@@ -164,7 +164,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraMoveSpeed: 10
+  scrollSpeed: 10
+  cameraTransform: {fileID: 659905780253194819}
   max_X: 500
   min_X: -500
   max_Z: 500
   min_Z: 100
+  maxScrollDown: 100
+  maxScrollUp: 500
