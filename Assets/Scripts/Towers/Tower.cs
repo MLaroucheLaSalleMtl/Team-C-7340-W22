@@ -17,10 +17,36 @@ namespace TowersNoDragons.Towers
 		private readonly int numberOfcollidersSearch = 1; //size of the search colliders array
 		private Collider[] enemyCollided;
 
+		//Attacking variables
+		private bool isAttacking = false;
+		private float attackTimer = 0f;
 
 		private void Start()
 		{
 			enemyCollided = new Collider[numberOfcollidersSearch];
+		}
+
+		private void Update()
+		{
+			if (target == null) { attackTimer = 0f; return; }
+
+			ProcessAttack();
+
+		}
+
+		private void ProcessAttack()
+		{
+			if (isAttacking && attackTimer == 0)
+			{
+				AttackTarget();
+			}
+
+			attackTimer += Time.deltaTime;
+
+			if (attackTimer >= towerType.GetAttackDelay())
+			{
+				attackTimer = 0f;
+			}
 		}
 
 		private void FixedUpdate()
@@ -34,7 +60,8 @@ namespace TowersNoDragons.Towers
 			{
 				if(IsInRange())
 				{
-					AttackTarget(); //Consider attacking in the Update func
+					//AttackTarget(); //Consider attacking in the Update func
+					isAttacking = true;
 				}
 			}
 		}
@@ -54,6 +81,8 @@ namespace TowersNoDragons.Towers
 			{
 				target = null;
 				enemyCollided[0] = null;
+				isAttacking = false;
+				this.StopAttacking();
 				return false;
 			}
 
@@ -61,13 +90,13 @@ namespace TowersNoDragons.Towers
 		}
 
 		protected abstract void AttackTarget();
-
+		protected abstract void StopAttacking();
 
 		//Testing tool to visualize range in the editor
-		private void OnDrawGizmos()
-		{
-			Gizmos.DrawWireSphere(transform.position, towerType.GetTowerRange());
-		}
+		//private void OnDrawGizmos()
+		//{
+		//	Gizmos.DrawWireSphere(transform.position, towerType.GetTowerRange());
+		//}
 	}
 }
 

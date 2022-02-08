@@ -9,6 +9,7 @@ namespace TowersNoDragons.TowerTypes
         [SerializeField] private int towerPrice = 100; //gold
         [SerializeField] private float damage = 10f;
         [SerializeField] int startingLevel = 1;
+        [SerializeField] float attackDelay = 2f;
 
         //for upgrades
         [Header("Level 2 Stats")][SerializeField] float level_2_Damage = 5f;
@@ -24,6 +25,16 @@ namespace TowersNoDragons.TowerTypes
         {
             return towerPrice;
         }
+
+        public float GetAttackDelay()
+		{
+            return attackDelay;
+        }
+
+        public float GetDamage()
+		{
+            return damage;
+		}
 
         //Upgrade Functions
         public void LevelUp()

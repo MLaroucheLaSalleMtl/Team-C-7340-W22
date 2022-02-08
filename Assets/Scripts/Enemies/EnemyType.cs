@@ -6,8 +6,15 @@ namespace TowersNoDragons.EnemyTypes
 	public class EnemyType : ScriptableObject
 	{
 		[SerializeField] private float movementSpeed = 25f; //nav-agent speed
+		[SerializeField] private float hp;
+		[Range(0f, 1f)][SerializeField] private float baseArmor;
+		[Range(0f,1f)][SerializeField] private float magicResistance;
 
-		public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
+		public float MovementSpeed { get => movementSpeed; }
+		public float Hp { get => hp; }
+		public float BaseArmor { get => baseArmor;  }
+		public float MagicResistance { get => magicResistance;  }
+		
 	}
 }
 

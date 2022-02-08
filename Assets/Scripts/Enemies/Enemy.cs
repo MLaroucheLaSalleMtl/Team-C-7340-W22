@@ -1,18 +1,24 @@
 using UnityEngine;
 using UnityEngine.AI;
-using TowersNoDragons.EnemyTypes;
 using System.Collections;
+using TowersNoDragons.EnemyTypes;
+using TowersNoDragons.AttackTypes;
 
 namespace TowersNoDragons.AI
 {
 	public abstract class Enemy : MonoBehaviour
 	{
-		[SerializeField] protected EnemyType enemyType = null;
+		[SerializeField] private EnemyType enemyType = null;
 
-		protected Transform[] path = null;
+		private Transform[] path = null;
 
 		private int currentPathIndex = 0;
 		private NavMeshAgent agent = null;
+
+		//stats
+		private float hp;
+		private float baseArmor;
+		private float magicResistance;
 
 		private void Awake()
 		{
@@ -21,7 +27,7 @@ namespace TowersNoDragons.AI
 
 		private void Start()
 		{
-			agent.speed = enemyType.MovementSpeed;
+			IntializeStats();
 		}
 
 		public void AssignPath(Transform[] path)
@@ -54,6 +60,34 @@ namespace TowersNoDragons.AI
 					}
 				}
 				yield return null;
+			}
+		}
+
+		private void IntializeStats()
+		{
+			this.agent.speed = this.enemyType.MovementSpeed;
+			this.hp = this.enemyType.Hp;
+			this.baseArmor = this.enemyType.BaseArmor;
+			this.magicResistance = this.enemyType.MagicResistance;
+		}
+
+		public void TakeDamage(float damage, DamageTypes damageType)
+		{
+			float finalDamage;
+
+			switch(damageType)
+			{
+				case DamageTypes.Magical:
+					finalDamage = damage - (damage * this.magicResistance);
+					break;
+
+				case DamageTypes.Physical:
+					finalDamage = damage - (damage * this.baseArmor);
+					break;
+
+				default:
+					finalDamage = 0;
+					break;
 			}
 		}
 	}

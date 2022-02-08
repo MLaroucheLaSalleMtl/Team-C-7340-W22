@@ -10,6 +10,11 @@ namespace TowersNoDragons.Towers
 		{
 			print("crystal tower attack");
 		}
+
+		protected override void StopAttacking()
+		{
+			//
+		}
 	}
 }
 
