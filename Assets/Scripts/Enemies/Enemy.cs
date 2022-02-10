@@ -89,6 +89,8 @@ namespace TowersNoDragons.AI
 					finalDamage = 0;
 					break;
 			}
+
+			print($"damage taken {finalDamage}");
 		}
 	}
 }

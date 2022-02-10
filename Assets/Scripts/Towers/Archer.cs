@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using TowersNoDragons.AI;
+using TowersNoDragons.Projectiles;
 using UnityEngine;
 
 namespace TowersNoDragons.Towers
 {
-    public class Archer : MonoBehaviour
-    {
-		[Tooltip("How fast the archer rotate towards the enemy")]
-		[SerializeField] float rotationSpeed = 2f;
+	public class Archer : MonoBehaviour
+	{
+		[Tooltip("How fast the archer rotates towards the enemy")]
+		[SerializeField] private float rotationSpeed = 2f;
+		[SerializeField] private Projectile projectilePrefab = null;
+		[SerializeField] private Transform shootingPoint = null;
 
 		private Enemy target = null;
 		private Vector3 targetDirection = new Vector3();
@@ -32,7 +33,7 @@ namespace TowersNoDragons.Towers
 		public void Attack(Enemy target)
 		{
 			this.target = target;
-			animator.SetBool("IsAttacking",true);
+			animator.SetBool("IsAttacking", true);
 		}
 
 		public void StopAttacking()
@@ -49,12 +50,17 @@ namespace TowersNoDragons.Towers
 			transform.rotation = Quaternion.Slerp(transform.rotation, rotationTarget, rotationSpeed * Time.deltaTime);
 		}
 
+		//Animation Event
 		private void AttackTarget()
 		{
+			if(target == null) { return; }
+			var instance = Instantiate(projectilePrefab, shootingPoint); //create an arrow
+			instance.AssignTarget(target.transform);
+			instance.transform.parent = null;
 
 		}
 
-		
+
 	}
 }
 

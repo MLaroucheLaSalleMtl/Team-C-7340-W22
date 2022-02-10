@@ -589,6 +589,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756470a1c66c639408559e6555df549e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 6631455902783997216, guid: 0eecf681bb542354b9cad06cae270244,
-    type: 3}
-  spawnTimer: 2
+  wave: {fileID: 0}
+  path: {fileID: 0}
+  spawnCooldown: 1

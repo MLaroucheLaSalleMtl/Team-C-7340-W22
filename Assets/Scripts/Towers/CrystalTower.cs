@@ -8,7 +8,7 @@ namespace TowersNoDragons.Towers
 	{
 		protected override void AttackTarget()
 		{
-			print("crystal tower attack");
+			//
 		}
 
 		protected override void StopAttacking()

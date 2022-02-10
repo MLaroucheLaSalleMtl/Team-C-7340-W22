@@ -6,15 +6,13 @@ namespace TowersNoDragons.Towers
 {
 	public abstract class Tower : MonoBehaviour
 	{
-		[SerializeField] protected TowerType towerType = null;
+		[SerializeField] protected TowerType towerType = null; //The base-stats of the tower
 		[SerializeField] protected Enemy target = null; //TODO: remove serialized || for testing only
-		[SerializeField] private LayerMask enemyLayer = new LayerMask();
-
-		//testing params / remove later
-		[SerializeField] private float searchRadiusOffset = 1f;
-
+		[SerializeField] private LayerMask enemyLayer = new LayerMask(); //layers to collide with
+		[SerializeField] private float searchRadiusOffset = 1f; //offset collision to compensate enemy radius of collision
+		
 		//params
-		private readonly int numberOfcollidersSearch = 1; //size of the search colliders array
+		private readonly int numberOfcollidersSearch = 1; //size of the search colliders array | if a tower can hit more than 1 enemy at a time, consider increasing this amount
 		private Collider[] enemyCollided;
 
 		//Attacking variables
@@ -28,7 +26,13 @@ namespace TowersNoDragons.Towers
 
 		private void Update()
 		{
-			if (target == null) { attackTimer = 0f; return; }
+			if (target == null)
+			{
+				attackTimer = 0f;
+				isAttacking = false;
+				this.StopAttacking();
+				return;
+			}
 
 			ProcessAttack();
 
@@ -53,28 +57,29 @@ namespace TowersNoDragons.Towers
 		{
 			if (target == null)
 			{
-				SearchForEnemy();
+				SearchForEnemy();	
 			}
 
-			if (target != null)
+			else if (target != null)
 			{
 				if(IsInRange())
 				{
-					//AttackTarget(); //Consider attacking in the Update func
 					isAttacking = true;
 				}
 			}
 		}
 
+		//Shpere search for a compatable collider of type "Enemy"
 		private void SearchForEnemy()
 		{
 			int collided = Physics.OverlapSphereNonAlloc(transform.position, towerType.GetTowerRange(), this.enemyCollided, enemyLayer);
 			if (collided != 0)
 			{
-				target = enemyCollided[0].GetComponentInParent<Enemy>(); //consider using a collider on the root enemy
+				target = enemyCollided[0].GetComponentInParent<Enemy>(); //TODO:consider using a collider on the root enemy
 			}
 		}
 
+		//Checks if the target is still in range
 		private bool IsInRange()
 		{
 			if (Vector3.Distance(transform.position, target.transform.position) > towerType.GetTowerRange() + searchRadiusOffset)
@@ -88,7 +93,11 @@ namespace TowersNoDragons.Towers
 
 			return true;
 		}
-
+		
+		/// <summary>
+		/// Every tower should attack and stop attacking.
+		/// Implementation will differ from one tower to another
+		/// </summary>
 		protected abstract void AttackTarget();
 		protected abstract void StopAttacking();
 

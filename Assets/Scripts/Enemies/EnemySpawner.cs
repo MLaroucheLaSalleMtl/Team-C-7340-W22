@@ -28,7 +28,6 @@ namespace TowersNoDragons.AI
         private IEnumerator SpawnProcess()
 		{
             int count = 0;
-            print(EnemiesToSpawns.Length);
             while(count < EnemiesToSpawns.Length)
 			{
                 yield return SpawnEnemyType(EnemiesToSpawns[count]);
