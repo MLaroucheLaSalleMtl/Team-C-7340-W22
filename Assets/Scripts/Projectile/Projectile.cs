@@ -28,13 +28,13 @@ namespace TowersNoDragons.Projectiles
 		{
 			if (other.CompareTag(enemyTag))
 			{
-				//other.GetComponent<Enemy>().TakeDamage(damage, damageType);
-				Destroy(other.gameObject);
+				other.GetComponent<Enemy>().TakeDamage(damage,damageType);
 				Destroy(gameObject);
 			}
 			else
 			{
-				Destroy(gameObject); 
+				rb.isKinematic = true;
+				Destroy(gameObject,4f); 
 			}
 				
 		}

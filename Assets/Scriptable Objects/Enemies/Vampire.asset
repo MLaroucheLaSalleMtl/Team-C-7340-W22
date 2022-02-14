@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17ff3f3385f78e4f8354ddc9db24241, type: 3}
   m_Name: Vampire
   m_EditorClassIdentifier: 
-  movementSpeed: 10
-  hp: 200
-  baseArmor: 0.75
-  magicResistance: 0.25
+  movementSpeed: 7
+  hp: 200000
+  baseArmor: 0.5
+  magicResistance: 0.122

@@ -10,10 +10,9 @@ namespace TowersNoDragons.Towers
 		[SerializeField] protected Enemy target = null; //TODO: remove serialized || for testing only
 		[SerializeField] private LayerMask enemyLayer = new LayerMask(); //layers to collide with
 		[SerializeField] private float searchRadiusOffset = 1f; //offset collision to compensate enemy radius of collision
-		
+
 		//params
-		private readonly int numberOfcollidersSearch = 1; //size of the search colliders array | if a tower can hit more than 1 enemy at a time, consider increasing this amount
-		private Collider[] enemyCollided;
+		[SerializeField] private Collider[] enemyCollided;
 
 		//Attacking variables
 		private bool isAttacking = false;
@@ -21,7 +20,7 @@ namespace TowersNoDragons.Towers
 
 		private void Start()
 		{
-			enemyCollided = new Collider[numberOfcollidersSearch];
+			enemyCollided = new Collider[10];
 		}
 
 		private void Update()
@@ -72,10 +71,11 @@ namespace TowersNoDragons.Towers
 		//Shpere search for a compatable collider of type "Enemy"
 		private void SearchForEnemy()
 		{
+			ClearEnemiesArray();
 			int collided = Physics.OverlapSphereNonAlloc(transform.position, towerType.GetTowerRange(), this.enemyCollided, enemyLayer);
 			if (collided != 0)
 			{
-				target = enemyCollided[0].GetComponentInParent<Enemy>(); //TODO:consider using a collider on the root enemy
+				target = ChooseClosestEnemy();
 			}
 		}
 
@@ -85,13 +85,39 @@ namespace TowersNoDragons.Towers
 			if (Vector3.Distance(transform.position, target.transform.position) > towerType.GetTowerRange() + searchRadiusOffset)
 			{
 				target = null;
-				enemyCollided[0] = null;
+				ClearEnemiesArray();
 				isAttacking = false;
 				this.StopAttacking();
 				return false;
 			}
 
 			return true;
+		}
+
+		private Enemy ChooseClosestEnemy()
+		{
+			Enemy enemyToReturn = null;
+			float minimumDistance = float.MaxValue;
+
+			foreach(var ele in enemyCollided)
+			{
+				if(ele == null) { continue; }
+				if(Vector3.Distance(transform.position, ele.transform.position) < minimumDistance)
+				{
+					enemyToReturn = ele.GetComponent<Enemy>();
+					minimumDistance = Vector3.Distance(transform.position, ele.transform.position);
+				}
+			}
+
+			return enemyToReturn;
+		}
+
+		private void ClearEnemiesArray()
+		{
+			for (int i = 0; i < enemyCollided.Length; i++)
+			{
+				enemyCollided[i] = null;
+			}
 		}
 		
 		/// <summary>

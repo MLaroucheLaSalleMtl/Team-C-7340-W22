@@ -84,6 +84,18 @@ namespace TowersNoDragons.Input
 		}
 
 		#endregion
+
+		//Mouse Position 
+		public Vector2 GetMousePosition()
+        {
+			return Mouse.current.position.ReadValue();
+		}
+		
+		//Mouse Click
+		public bool MouseClick()
+		{
+			return Mouse.current.leftButton.wasReleasedThisFrame;
+		}
 	}
 }
 

@@ -14,15 +14,17 @@ namespace TowersNoDragons.AI
 
 		private int currentPathIndex = 0;
 		private NavMeshAgent agent = null;
+		private EnemyEventHandler eventHandler;
 
 		//stats
-		private float hp;
 		private float baseArmor;
 		private float magicResistance;
+		private float hp;
 
 		private void Awake()
 		{
 			agent = GetComponent<NavMeshAgent>();
+			eventHandler = GetComponent<EnemyEventHandler>();
 		}
 
 		private void Start()
@@ -53,7 +55,7 @@ namespace TowersNoDragons.AI
 				}
 				else
 				{
-					if (agent.remainingDistance <= 0.2f)
+					if (agent.isOnNavMesh && agent.remainingDistance <= 0.2f)
 					{
 						reachedWayPoint = true;
 						currentPathIndex++;
@@ -66,9 +68,9 @@ namespace TowersNoDragons.AI
 		private void IntializeStats()
 		{
 			this.agent.speed = this.enemyType.MovementSpeed;
-			this.hp = this.enemyType.Hp;
 			this.baseArmor = this.enemyType.BaseArmor;
 			this.magicResistance = this.enemyType.MagicResistance;
+			this.hp = this.enemyType.Hp;
 		}
 
 		public void TakeDamage(float damage, DamageTypes damageType)
@@ -90,7 +92,11 @@ namespace TowersNoDragons.AI
 					break;
 			}
 
-			print($"damage taken {finalDamage}");
+			this.hp -= finalDamage;
+
+			float percentDamage = this.hp / this.enemyType.Hp;
+
+			eventHandler.OnTakeDamageEvent(amount: this.hp,damagePercent: percentDamage);
 		}
 	}
 }

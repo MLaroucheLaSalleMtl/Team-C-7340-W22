@@ -87,6 +87,8 @@ GameObject:
   - component: {fileID: 3406108041923048739}
   - component: {fileID: -9164362376002471951}
   - component: {fileID: 1806321297697775527}
+  - component: {fileID: 8640946529584593006}
+  - component: {fileID: 6736511661610770556}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -121,13 +123,13 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 5
   avoidancePriority: 50
-  m_AngularSpeed: 500
+  m_AngularSpeed: 10000
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
-  m_AutoRepath: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 0
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
@@ -145,6 +147,63 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8640946529584593006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3406108041923048767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9da5c06c2a56784b94e4cf1ef0a97e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6736511661610770556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3406108041923048767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d24b55c12a6704eb8840665b039ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8640946529584593006}
+        m_TargetAssemblyTypeName: TowersNoDragons.AI.Health, Assembly-CSharp
+        m_MethodName: UpdateHealth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnUiUpdate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7951886209470428152}
+        m_TargetAssemblyTypeName: TowersNoDragons.UI.UpdateHealthUI, Assembly-CSharp
+        m_MethodName: Update_HP_UI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5140881983294093280
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +216,7 @@ GameObject:
   - component: {fileID: 1863992447695314103}
   - component: {fileID: 6375980582859109733}
   - component: {fileID: 5030708072508790008}
+  - component: {fileID: 7951886209470428152}
   m_Layer: 5
   m_Name: Enemy UI
   m_TagString: Untagged
@@ -242,10 +302,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1863992447695314103}
+  isScalable: 1
   maxRectWidth: 3.8
   minRectWidth: 2.5
   maxRectHeight: 1.2
   minRectHeight: 0.9
+--- !u!114 &7951886209470428152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5140881983294093280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58a2ceb8a94f8547b26755d1f1d8dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP_Container: {fileID: 5410510928274867069}
+  hpBarImage: {fileID: 5682478382074063546}
 --- !u!1 &5410510928274867069
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &705371825111712940
 RectTransform:
   m_ObjectHideFlags: 0

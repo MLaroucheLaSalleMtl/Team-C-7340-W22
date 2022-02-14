@@ -5,8 +5,8 @@ namespace TowersNoDragons.UI
 {
 	public class FaceCamera : MonoBehaviour
 	{
-		//TODO: show ui onlu when attacked
 		[SerializeField] Canvas canvas = null;
+		[SerializeField] private bool isScalable = true; //only for HP bars
 		[SerializeField] private float maxRectWidth = 4f;
 		[SerializeField] private float minRectWidth = 1.5f;
 		[SerializeField] private float maxRectHeight = 1.2f;
@@ -25,7 +25,11 @@ namespace TowersNoDragons.UI
 
 		private void LateUpdate()
 		{
-			DynamiclyScaleHPbar();
+			if(isScalable)
+			{
+				DynamiclyScaleHPbar();
+			}
+			
 
 			transform.LookAt(
 				transform.position + Camera.main.transform.rotation * Vector3.forward,
