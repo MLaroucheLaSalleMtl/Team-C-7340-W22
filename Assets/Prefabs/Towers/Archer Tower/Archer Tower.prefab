@@ -1425,7 +1425,6 @@ GameObject:
   - component: {fileID: 6962444501893537506}
   - component: {fileID: 4172376926268220595}
   - component: {fileID: 9142317662094286520}
-  - component: {fileID: 7974102768885591443}
   m_Layer: 0
   m_Name: Archer Tower Body
   m_TagString: Untagged
@@ -1501,20 +1500,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4039014956714072139}
-  m_Mesh: {fileID: 4300000, guid: deec38ced5f04fe45a55d640515203cc, type: 2}
---- !u!64 &7974102768885591443
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4039014956714072139}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: deec38ced5f04fe45a55d640515203cc, type: 2}
 --- !u!1 &4272504038212864825
 GameObject:
@@ -3237,11 +3222,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerType: {fileID: 11400000, guid: d3491f01296cdcc4295337b27a3795b3, type: 2}
-  target: {fileID: 0}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
   searchRadiusOffset: 1
+  spawningHeight_Y: 25
+  spawningSpeed: 45
+  enemyCollided: []
   archer: {fileID: 8390792039017428064}
 --- !u!4 &5351589051897633833 stripped
 Transform:

@@ -9,9 +9,11 @@ namespace TowersNoDragons.Core
         [SerializeField] private GameObject selectedGameObject = null;
         [SerializeField] private LayerMask layerMask = new LayerMask();
 
+
         private Ray ray;
         private RaycastHit hit;
         private bool hitGround = false;
+
 
 		private void Update()
 		{
@@ -20,7 +22,8 @@ namespace TowersNoDragons.Core
             {
                 if (selectedGameObject != null)
                 {
-                    selectedGameObject.GetComponent<BuildHandler>().DisplayBuildPanel();
+                    if (selectedGameObject.GetComponentInParent<BuildHandler>() == null) { selectedGameObject = null; return; }
+                    selectedGameObject.GetComponentInParent<BuildHandler>().DisplayBuildPanel();
                     selectedGameObject = null;
                 }
             }
@@ -44,7 +47,8 @@ namespace TowersNoDragons.Core
           
 				else if(selectedGameObject != null)
 				{
-                    selectedGameObject.GetComponent<BuildHandler>().DisplayBuildPanel();
+                    if(selectedGameObject.GetComponentInParent<BuildHandler>() == null) { selectedGameObject = null; return; }
+                    selectedGameObject.GetComponentInParent<BuildHandler>().DisplayBuildPanel();
                     selectedGameObject = hit.collider.gameObject;
                 }
 
@@ -53,7 +57,7 @@ namespace TowersNoDragons.Core
                     selectedGameObject = hit.collider.gameObject;
                 }
 
-                selectedGameObject.GetComponent<BuildHandler>().DisplayBuildPanel();
+                selectedGameObject.GetComponentInParent<BuildHandler>().DisplayBuildPanel();
 
 
             }

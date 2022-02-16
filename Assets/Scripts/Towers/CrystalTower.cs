@@ -6,19 +6,15 @@ namespace TowersNoDragons.Towers
 	public class CrystalTower : Tower
 	{
 		[SerializeField] private LineRenderer lineRenderer = null;
-		[SerializeField] private float damage = 5f; //per frama
+		[SerializeField] private float damage = 5f; //per frame
 		[SerializeField] private DamageTypes damageType = DamageTypes.Magical;
-
-		private void Start()
-		{
-			lineRenderer.SetPosition(0, lineRenderer.transform.position);
-		}
 
 		protected override void AttackTarget()
 		{
 			if(base.target == null) { StopAttacking(); }
 			lineRenderer.enabled = true;
-			lineRenderer.SetPosition(1, base.target.transform.position);
+			lineRenderer.SetPosition(0, lineRenderer.transform.position); //start pos
+			lineRenderer.SetPosition(1, base.target.transform.position); //target pos /end pos
 			base.target.TakeDamage(damage, damageType);
 		}
 

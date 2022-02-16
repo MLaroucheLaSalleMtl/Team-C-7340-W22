@@ -1,30 +1,39 @@
+using System.Collections;
 using TowersNoDragons.AI;
 using TowersNoDragons.TowerTypes;
+using TowersNoDragons.UI;
 using UnityEngine;
 
 namespace TowersNoDragons.Towers
 {
 	public abstract class Tower : MonoBehaviour
 	{
+		
 		[SerializeField] protected TowerType towerType = null; //The base-stats of the tower
-		[SerializeField] protected Enemy target = null; //TODO: remove serialized || for testing only
 		[SerializeField] private LayerMask enemyLayer = new LayerMask(); //layers to collide with
 		[SerializeField] private float searchRadiusOffset = 1f; //offset collision to compensate enemy radius of collision
-
-		//params
+		[Header("Spawning")]
+		[SerializeField] float spawningHeight_Y = 4.8f; //based on the tower height, determine the required height to be placed above ground
+		[SerializeField] private float spawningSpeed = 1f; //TODO: make CONST/readonly
+														   //params
 		[SerializeField] private Collider[] enemyCollided;
 
 		//Attacking variables
+		protected Enemy target = null;
 		private bool isAttacking = false;
 		private float attackTimer = 0f;
+		[SerializeField] private bool canAttack = false; //TODO: REMOVE SERIALIZE
+		private BuildHandler buildingBase = null; //the base that built this tower
 
 		private void Start()
 		{
 			enemyCollided = new Collider[10];
+			StartCoroutine(PositionTower());
 		}
 
 		private void Update()
 		{
+			if (!canAttack) { return; } //not fully spawned yet
 			if (target == null)
 			{
 				attackTimer = 0f;
@@ -54,6 +63,7 @@ namespace TowersNoDragons.Towers
 
 		private void FixedUpdate()
 		{
+			if (!canAttack) { return; } //not fully spawned yet
 			if (target == null)
 			{
 				SearchForEnemy();	
@@ -118,6 +128,22 @@ namespace TowersNoDragons.Towers
 			{
 				enemyCollided[i] = null;
 			}
+		}
+
+		private IEnumerator PositionTower()
+		{
+			while (transform.position.y < spawningHeight_Y)
+			{
+				transform.Translate(Vector3.up * spawningSpeed * Time.deltaTime);
+				yield return null;
+			}
+
+			canAttack = true; //fully spawned
+		}
+
+		public void AssignBuildingPlace(BuildHandler buildHandler)
+		{
+			buildingBase = buildHandler;
 		}
 		
 		/// <summary>
