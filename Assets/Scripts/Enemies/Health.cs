@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TowersNoDragons.AI
@@ -7,6 +5,8 @@ namespace TowersNoDragons.AI
 	public class Health : MonoBehaviour
 	{
 		private EnemyEventHandler eventHandler;
+
+		private bool isDead = false;
 
 		private void Awake()
 		{
@@ -18,8 +18,9 @@ namespace TowersNoDragons.AI
 		{
 			eventHandler.OnUI_HP_Update(percentDamage);
 
-			if (newHealth <= 0)
+			if (newHealth <= 0 && !isDead)
 			{
+				isDead = true;
 				eventHandler.OnDeathEvent();
 				Destroy(gameObject); //TODO: MAKE A DEATH ANIMATION /RAGDOLL
 			}

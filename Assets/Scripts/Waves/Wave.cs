@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TowersNoDragons.AI;
 using UnityEngine;
 
@@ -10,13 +8,18 @@ namespace TowersNoDragons.Waves
 	{
 		[SerializeField] private EnemiesToSpawn[] enemiesToSpawn;
 
-		[System.Serializable]
+		private int totalAmount = 0;
+		public int TotalAmount { get => totalAmount; }
+
+        [System.Serializable]
 		public class EnemiesToSpawn
 		{
 			[SerializeField] private Enemy enemyPrefab = null;
 			[SerializeField] private int amountToSpawn;
 
-			public int GetAmount()
+            public int AmountToSpawn { get => amountToSpawn;}
+
+            public int GetAmount()
 			{
 				return amountToSpawn;
 			}
@@ -32,7 +35,20 @@ namespace TowersNoDragons.Waves
 			return enemiesToSpawn;
 		}
 
-	}
+		private void CalculateTotalAmount()
+        {
+			totalAmount = 0;
+			foreach(var ele in enemiesToSpawn)
+            {
+				totalAmount += ele.GetAmount();
+            }
+        }
+
+        private void OnEnable()
+        {
+			CalculateTotalAmount();
+        }
+    }
 
 }
 

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 7
   hp: 100
-  baseArmor: 0.5
-  magicResistance: 1
+  baseArmor: 0.892
+  magicResistance: 0.302

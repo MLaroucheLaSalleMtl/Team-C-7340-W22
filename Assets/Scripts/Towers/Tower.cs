@@ -8,7 +8,7 @@ namespace TowersNoDragons.Towers
 {
 	public abstract class Tower : MonoBehaviour
 	{
-		
+		[Header("Tower Prefs")]
 		[SerializeField] protected TowerType towerType = null; //The base-stats of the tower
 		[SerializeField] private LayerMask enemyLayer = new LayerMask(); //layers to collide with
 		[SerializeField] private float searchRadiusOffset = 1f; //offset collision to compensate enemy radius of collision
@@ -23,7 +23,7 @@ namespace TowersNoDragons.Towers
 		private bool isAttacking = false;
 		private float attackTimer = 0f;
 		[SerializeField] private bool canAttack = false; //TODO: REMOVE SERIALIZE
-		private BuildHandler buildingBase = null; //the base that built this tower
+		private BuildHandler buildingBase = null; //the reference to the base that built this tower | when we sell the tower it should "show" again
 
 		private void Start()
 		{
@@ -153,11 +153,18 @@ namespace TowersNoDragons.Towers
 		protected abstract void AttackTarget();
 		protected abstract void StopAttacking();
 
+
+
+
+
+
+
+
 		//Testing tool to visualize range in the editor
-		//private void OnDrawGizmos()
-		//{
-		//	Gizmos.DrawWireSphere(transform.position, towerType.GetTowerRange());
-		//}
+		private void OnDrawGizmos()
+		{
+			Gizmos.DrawWireSphere(transform.position, towerType.GetTowerRange());
+		}
 	}
 }
 

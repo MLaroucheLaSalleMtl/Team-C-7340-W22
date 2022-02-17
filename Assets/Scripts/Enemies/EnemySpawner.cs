@@ -2,8 +2,9 @@ using System.Collections;
 using TowersNoDragons.Pathing;
 using TowersNoDragons.Waves;
 using UnityEngine;
+using TowersNoDragons.Core;
 
-namespace TowersNoDragons.AI
+namespace TowersNoDragons.Spawner
 {
     public class EnemySpawner : MonoBehaviour
     {
@@ -13,10 +14,10 @@ namespace TowersNoDragons.AI
 
         private Wave.EnemiesToSpawn[] EnemiesToSpawns;
 
-
-        private void Start()
+		private void Start()
         {
             EnemiesToSpawns = wave.GetEnemiesToSpawns();
+            TotalEnemiesCount(); //win loss handler notification
             SpawnEnemy();
         }
 
@@ -38,7 +39,7 @@ namespace TowersNoDragons.AI
         private IEnumerator SpawnEnemyType(Wave.EnemiesToSpawn enemiesToSpawn)
 		{
             int enemiesSpawned = 0;
-
+            
             while (enemiesSpawned < enemiesToSpawn.GetAmount())
             {
                 var instance = Instantiate(enemiesToSpawn.GetEnemy(), transform);
@@ -47,7 +48,16 @@ namespace TowersNoDragons.AI
                 yield return new WaitForSeconds(spawnCooldown);
             }
         }
-    }
+
+		private void TotalEnemiesCount()
+		{
+			foreach (var ele in EnemiesToSpawns)
+			{
+                WinLossHandler.Instance.TotalAmountOfEnemies += ele.GetAmount();
+			}
+		}
+
+	}
 }
 
 

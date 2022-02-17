@@ -8,7 +8,7 @@ namespace TowersNoDragons.Towers
 	{
 		[Tooltip("How fast the archer rotates towards the enemy")]
 		[SerializeField] private float rotationSpeed = 2f;
-		[SerializeField] private Projectile projectilePrefab = null;
+		[SerializeField] private Arrow projectilePrefab = null;
 		[SerializeField] private Transform shootingPoint = null;
 
 		private Enemy target = null;
