@@ -49,6 +49,35 @@ namespace TowersNoDragons.Cameras
 		private void Update()
 		{
 			//Movement - Camera Rig
+			ProcessInput();
+
+			//clamp camera movement to bounds
+			ClampPosition();
+
+			//Scroll and Zoom
+			ProcessScrollAmount();
+
+		}
+
+		private void ProcessScrollAmount()
+		{
+			newScrollPos.z = newScrollPos.y * -1;
+
+			//Ratio of the scroll for the enemy UI
+			zoomRatio = (newScrollPos.y - maxScrollDown) / (maxScrollUp - maxScrollDown);
+		}
+
+		private void ClampPosition()
+		{
+			newPosition.x = Mathf.Clamp(newPosition.x, min_X, max_X);
+			newPosition.z = Mathf.Clamp(newPosition.z, min_Z, max_Z);
+
+			//clamp camera zoom to bounds
+			newScrollPos.y = Mathf.Clamp(newScrollPos.y, maxScrollDown, maxScrollUp);
+		}
+
+		private void ProcessInput()
+		{
 			horizontal = InputController.GetHorizontalDirection();
 			vertical = InputController.GetVerticalDirection();
 
@@ -57,22 +86,8 @@ namespace TowersNoDragons.Cameras
 
 			newPosition = direction_x + direction_y + transform.position;
 
-			//clamp camera movement to bounds
-			newPosition.x = Mathf.Clamp(newPosition.x, min_X, max_X);
-			newPosition.z = Mathf.Clamp(newPosition.z, min_Z, max_Z);
-
 			//Scroll - Main Camera
 			newScrollPos.y += scrollSpeed * Time.deltaTime * InputController.GetScrollDirection();
-
-			//clamp camera zoom to bounds
-			newScrollPos.y = Mathf.Clamp(newScrollPos.y, maxScrollDown, maxScrollUp);
-
-			newScrollPos.z = newScrollPos.y * -1;
-
-			//Ratio of the scroll for the enemy UI
-			zoomRatio = (newScrollPos.y - maxScrollDown) / (maxScrollUp - maxScrollDown);
-
-
 		}
 
 		private void LateUpdate()

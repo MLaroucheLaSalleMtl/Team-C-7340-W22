@@ -1,3 +1,9 @@
+/*
+ * Main scipt for all the enemies.
+ * Assigning basic stats, getting path and taking damage when hit.
+ * Sends the event forward to the central event system.
+ */
+
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
@@ -9,6 +15,9 @@ namespace TowersNoDragons.AI
 	public abstract class Enemy : MonoBehaviour
 	{
 		[SerializeField] private EnemyType enemyType = null;
+		[Header("Ragdoll On Death")]
+		[SerializeField] private GameObject NormalAgent = null;
+		[SerializeField] private GameObject ragDoll = null; 
 
 		private Transform[] path = null;
 
@@ -21,6 +30,7 @@ namespace TowersNoDragons.AI
 		private float magicResistance;
 		private float hp;
 
+		//cache
 		private void Awake()
 		{
 			agent = GetComponent<NavMeshAgent>();
@@ -32,6 +42,7 @@ namespace TowersNoDragons.AI
 			IntializeStats();
 		}
 
+		//Get the designated path 
 		public void AssignPath(Transform[] path)
 		{
 			this.path = path;
@@ -41,9 +52,9 @@ namespace TowersNoDragons.AI
 
 		}
 
+		//getting all the waypoint and moving dynamicly towards every single one of them.
 		private IEnumerator PathProcess()
 		{
-			
 			bool reachedWayPoint = true;
 
 			while(currentPathIndex < path.Length)
@@ -65,6 +76,7 @@ namespace TowersNoDragons.AI
 			}
 		}
 
+		//get all the stats from the enemyType scriptable object
 		private void IntializeStats()
 		{
 			this.agent.speed = this.enemyType.MovementSpeed;
@@ -73,6 +85,10 @@ namespace TowersNoDragons.AI
 			this.hp = this.enemyType.Hp;
 		}
 
+		/// <summary>
+		/// Main function to take damage, calculate the final damage based on the armor type and attack type
+		/// Send the final hp value to Health script through the central event system.
+		/// </summary>
 		public void TakeDamage(float damage, DamageTypes damageType)
 		{
 			float finalDamage;
@@ -98,6 +114,24 @@ namespace TowersNoDragons.AI
 
 			eventHandler.OnTakeDamageEvent(amount: this.hp,damagePercent: percentDamage);
 		}
+
+		#region Testing_Zone_ScorpionTower
+		//applies only to the Scorpion Tower
+		public void GetHookedAndPulled()
+		{
+			Invoke("NullParent", 1f);
+			agent.enabled = false;
+			NormalAgent.SetActive(false);
+			ragDoll.SetActive(true);
+			
+		}
+
+		private void NullParent()
+		{
+			ragDoll.transform.SetParent(null);
+		}
+
+		#endregion
 	}
 }
 

@@ -1,3 +1,9 @@
+/*
+ * The Crystal Tower renderes a line from its origin to the target position.
+ * Due to the cooldown of shooting for every tower OnUpdate, the cooldown for attacks of the Crystal Tower
+ * Should always be set to 0!!!
+ */
+
 using TowersNoDragons.AttackTypes;
 using UnityEngine;
 

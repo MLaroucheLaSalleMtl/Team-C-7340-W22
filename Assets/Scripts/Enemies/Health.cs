@@ -1,3 +1,8 @@
+/*The main logic for the hp logic of every enemy.
+ * The final health points are sent here to decide the faith of the enemy
+ * and update its UI accordingly
+ */
+
 using UnityEngine;
 
 namespace TowersNoDragons.AI
@@ -13,7 +18,7 @@ namespace TowersNoDragons.AI
 			eventHandler = GetComponent<EnemyEventHandler>();
 		}
 
-
+		//Event notification for the UI
 		public void UpdateHealth(float newHealth, float percentDamage)
 		{
 			eventHandler.OnUI_HP_Update(percentDamage);

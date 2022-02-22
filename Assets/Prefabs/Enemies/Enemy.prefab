@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 6375980582859109733}
   - component: {fileID: 5030708072508790008}
   - component: {fileID: 7951886209470428152}
+  - component: {fileID: 4893956276349526796}
   m_Layer: 5
   m_Name: Enemy UI
   m_TagString: Untagged
@@ -301,12 +302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f16a4fefc97324fa6f741a8ffed013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 1863992447695314103}
-  isScalable: 1
-  maxRectWidth: 3.8
-  minRectWidth: 2.5
-  maxRectHeight: 1.2
-  minRectHeight: 0.9
 --- !u!114 &7951886209470428152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +316,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP_Container: {fileID: 5410510928274867069}
   hpBarImage: {fileID: 5682478382074063546}
+--- !u!114 &4893956276349526796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5140881983294093280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4882ff34c2cdf94b826217d6d91fbae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRectWidth: 4
+  minRectWidth: 2
+  maxRectHeight: 1.2
+  minRectHeight: 0.9
 --- !u!1 &5410510928274867069
 GameObject:
   m_ObjectHideFlags: 0

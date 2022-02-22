@@ -4,6 +4,8 @@ namespace TowersNoDragons.Core
 {
     public class WinLossHandler : MonoBehaviour
     {
+        [SerializeField] private GameObject winPanel;
+        [SerializeField] private GameObject losePanel;
         [SerializeField] private int lives = 10;
         [SerializeField] private int enemiesEliminated = 0;
         [SerializeField] private int totalAmountOfEnemies;
@@ -38,11 +40,15 @@ namespace TowersNoDragons.Core
 
         private void GameLoss()
         {
+            Time.timeScale = 0;
+            losePanel.SetActive(true);
             print("You lost the game!");
         }
 
         private void GameWin()
         {
+            Time.timeScale = 0;
+            winPanel.SetActive(true);
             print("You won the game!");
         }
 

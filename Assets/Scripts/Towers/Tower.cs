@@ -1,3 +1,8 @@
+/*
+ * Main Tower class that stores all the common and shared variables and functions 
+ * for every tower
+ */
+
 using System.Collections;
 using TowersNoDragons.AI;
 using TowersNoDragons.TowerTypes;
@@ -13,52 +18,41 @@ namespace TowersNoDragons.Towers
 		[SerializeField] private LayerMask enemyLayer = new LayerMask(); //layers to collide with
 		[SerializeField] private float searchRadiusOffset = 1f; //offset collision to compensate enemy radius of collision
 		[Header("Spawning")]
-		[SerializeField] float spawningHeight_Y = 4.8f; //based on the tower height, determine the required height to be placed above ground
-		[SerializeField] private float spawningSpeed = 1f; //TODO: make CONST/readonly
-														   //params
-		[SerializeField] private Collider[] enemyCollided;
+		[SerializeField] float spawningHeight_Y = 4.8f; //based on the tower height, determine the required height to be placed above ground								 
+
 
 		//Attacking variables
+		private Collider[] enemyCollided;
 		protected Enemy target = null;
 		private bool isAttacking = false;
-		private float attackTimer = 0f;
-		[SerializeField] private bool canAttack = false; //TODO: REMOVE SERIALIZE
+		private float attackTimer = 0f; //timer to track the attack cooldown
+		private bool canAttack = false;
 		private BuildHandler buildingBase = null; //the reference to the base that built this tower | when we sell the tower it should "show" again
+		private readonly float spawningSpeed = 35f; //how fast the towe spawns from bottom up
 
 		private void Start()
 		{
 			enemyCollided = new Collider[10];
+			attackTimer = towerType.GetAttackDelay();
 			StartCoroutine(PositionTower());
 		}
 
 		private void Update()
 		{
-			if (!canAttack) { return; } //not fully spawned yet
+			if (!canAttack) { return; } //not fully spawned yet from the ground up
+
 			if (target == null)
 			{
-				attackTimer = 0f;
 				isAttacking = false;
 				this.StopAttacking();
 				return;
 			}
 
+			attackTimer += Time.deltaTime;
+			attackTimer = Mathf.Clamp(attackTimer, 0, towerType.GetAttackDelay());
+
 			ProcessAttack();
 
-		}
-
-		private void ProcessAttack()
-		{
-			if (isAttacking && attackTimer == 0)
-			{
-				AttackTarget();
-			}
-
-			attackTimer += Time.deltaTime;
-
-			if (attackTimer >= towerType.GetAttackDelay())
-			{
-				attackTimer = 0f;
-			}
 		}
 
 		private void FixedUpdate()
@@ -78,7 +72,17 @@ namespace TowersNoDragons.Towers
 			}
 		}
 
-		//Shpere search for a compatable collider of type "Enemy"
+		//The actual attack call based on the attackTimer 
+		private void ProcessAttack()
+		{
+			if (isAttacking && attackTimer >= towerType.GetAttackDelay())
+			{
+				AttackTarget();
+				attackTimer = 0f;
+			}
+		}
+
+		//Shpere search for a compatible collider of type "Enemy"
 		private void SearchForEnemy()
 		{
 			ClearEnemiesArray();
@@ -122,6 +126,7 @@ namespace TowersNoDragons.Towers
 			return enemyToReturn;
 		}
 
+		//keep the collided array clean and updated
 		private void ClearEnemiesArray()
 		{
 			for (int i = 0; i < enemyCollided.Length; i++)
@@ -130,6 +135,7 @@ namespace TowersNoDragons.Towers
 			}
 		}
 
+		//called one time on build
 		private IEnumerator PositionTower()
 		{
 			while (transform.position.y < spawningHeight_Y)
@@ -141,6 +147,7 @@ namespace TowersNoDragons.Towers
 			canAttack = true; //fully spawned
 		}
 
+		//keep reference to the exact build spot
 		public void AssignBuildingPlace(BuildHandler buildHandler)
 		{
 			buildingBase = buildHandler;
@@ -160,9 +167,10 @@ namespace TowersNoDragons.Towers
 
 
 
-		//Testing tool to visualize range in the editor
+		//Testing tool to visualize the range in the editor
 		private void OnDrawGizmos()
 		{
+			if(towerType == null) { return; }
 			Gizmos.DrawWireSphere(transform.position, towerType.GetTowerRange());
 		}
 	}

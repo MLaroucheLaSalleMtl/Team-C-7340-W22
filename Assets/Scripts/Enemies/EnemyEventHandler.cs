@@ -1,3 +1,8 @@
+/*
+ * Center script for all of the events that will be triggered by the enemy's state
+ */
+
+
 using UnityEngine;
 using UnityEngine.Events;
 using TowersNoDragons.Core;
@@ -10,6 +15,7 @@ namespace TowersNoDragons.AI
 		[SerializeField] private EnemyUiEvent OnUiUpdate = null;
 		[SerializeField] private UnityEvent OnDeath = null;
 
+		#region UnityEvents_Classes_Definition
 
 		[System.Serializable]
 		public class EnemyEvent : UnityEvent<float,float>
@@ -20,7 +26,7 @@ namespace TowersNoDragons.AI
 		public class EnemyUiEvent : UnityEvent<float>
 		{
 		}
-
+		#endregion
 
 		public void OnTakeDamageEvent(float amount, float damagePercent)
 		{

@@ -1,3 +1,7 @@
+/*
+ * Data script for the dynamic wave that can spawn different Enemy type objects in any amount and order of spawn
+ */
+
 using TowersNoDragons.AI;
 using UnityEngine;
 

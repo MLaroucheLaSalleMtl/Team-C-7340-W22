@@ -42,7 +42,7 @@ namespace TowersNoDragons.Spawner
             
             while (enemiesSpawned < enemiesToSpawn.GetAmount())
             {
-                var instance = Instantiate(enemiesToSpawn.GetEnemy(), transform);
+                var instance = Instantiate(enemiesToSpawn.GetEnemy(), transform.position,Quaternion.identity);
                 instance.AssignPath(this.path.GetPath());
                 enemiesSpawned++;
                 yield return new WaitForSeconds(spawnCooldown);

@@ -1,3 +1,7 @@
+/*
+ * Script to store all the waypoints for the path
+ * and return it when WAVE asks to assign a path for each spawned Enemy
+ */
 using UnityEngine;
 
 namespace TowersNoDragons.Pathing

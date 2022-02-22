@@ -2382,7 +2382,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a8674175ec85915449eabfb4120f2836, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -3227,8 +3227,6 @@ MonoBehaviour:
     m_Bits: 64
   searchRadiusOffset: 1
   spawningHeight_Y: 25
-  spawningSpeed: 45
-  enemyCollided: []
   archer: {fileID: 8390792039017428064}
 --- !u!4 &5351589051897633833 stripped
 Transform:

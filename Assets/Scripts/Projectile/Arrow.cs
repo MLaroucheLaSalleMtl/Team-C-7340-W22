@@ -1,3 +1,9 @@
+/*
+ * The arrow should know the target position at all time
+ * The arrow looks at the target and translates towards it
+ * The arrow detects collision either with the target or the ground
+ */
+
 using TowersNoDragons.AI;
 using TowersNoDragons.AttackTypes;
 using UnityEngine;

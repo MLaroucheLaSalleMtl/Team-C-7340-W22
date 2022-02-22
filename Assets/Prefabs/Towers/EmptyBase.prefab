@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7651202294006410700}
   - component: {fileID: 307858273338136633}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 3514513434677966925}
   - component: {fileID: 4247223898431773470}
   - component: {fileID: 265467127473353690}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 4020757266735446904}
   - component: {fileID: 6716065186028038313}
   - component: {fileID: 5063528793199258327}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Build Crystal Tower option
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 1103206312545958666}
   - component: {fileID: 4084990335886601199}
   - component: {fileID: 5608628266026153578}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cont (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 7296671306733046243}
   - component: {fileID: 913765271139637665}
   - component: {fileID: 861507014285040389}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cont
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,9 +420,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5946288861256657806}
   - component: {fileID: 967129062084732788}
-  m_Layer: 0
+  - component: {fileID: 7133805337759545537}
+  m_Layer: 10
   m_Name: EmptyBase
-  m_TagString: Untagged
+  m_TagString: buildOption
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -461,6 +462,19 @@ MonoBehaviour:
   crystalTower: {fileID: 3517057904567035277, guid: 25476c019ed1b7e4c9b29956da1176ce,
     type: 3}
   lowest_Y_Spawn: -10
+--- !u!65 &7133805337759545537
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946288861256657805}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 1, z: 6}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6387698968631612347
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +487,7 @@ GameObject:
   - component: {fileID: 6632827586978684588}
   - component: {fileID: 6012132516826741877}
   - component: {fileID: 5283100776553155529}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Build Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,10 +589,9 @@ GameObject:
   - component: {fileID: 5585442743176032411}
   - component: {fileID: 6283077514449705787}
   - component: {fileID: 6064475674378638690}
-  - component: {fileID: 4314090721770095182}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: EmptyBaseBody
-  m_TagString: Untagged
+  m_TagString: buildOption
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -649,19 +662,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4314090721770095182
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7602680496821868477}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7790215424295266458
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,7 +673,7 @@ GameObject:
   - component: {fileID: 7352372065012691538}
   - component: {fileID: 9064189408151521524}
   - component: {fileID: 872391605205949608}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +751,7 @@ GameObject:
   - component: {fileID: 6710300848421893986}
   - component: {fileID: 221473336367521658}
   - component: {fileID: 3536857477191888516}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Build Archer Tower option
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 8549547933237090724}
   - component: {fileID: 952378322625767482}
   - component: {fileID: 2896401511528792478}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -898,7 +898,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8739581540190676762}
-  m_LocalRotation: {x: 0.056401465, y: 0.38196966, z: -0.023362251, w: 0.9221564}
+  m_LocalRotation: {x: 0.032242928, y: 0.3824503, z: -0.013355457, w: 0.9233168}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -906,7 +906,7 @@ RectTransform:
   - {fileID: 7651202294006410700}
   m_Father: {fileID: 5585442743176032411}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 7, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 4, y: 45, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 14.06}

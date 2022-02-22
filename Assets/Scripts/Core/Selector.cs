@@ -9,7 +9,6 @@ namespace TowersNoDragons.Core
         [SerializeField] private GameObject selectedGameObject = null;
         [SerializeField] private LayerMask layerMask = new LayerMask();
 
-
         private Ray ray;
         private RaycastHit hit;
         private bool hitGround = false;
@@ -20,13 +19,15 @@ namespace TowersNoDragons.Core
             //if the mouse points at the ground and is clicked
             if (InputController.Instance.MouseClick() && hitGround)
             {
-                if (selectedGameObject != null)
-                {
-                    if (selectedGameObject.GetComponentInParent<BuildHandler>() == null) { selectedGameObject = null; return; }
-                    selectedGameObject.GetComponentInParent<BuildHandler>().DisplayBuildPanel();
-                    selectedGameObject = null;
+                if(selectedGameObject != null)
+				{
+                    selectedGameObject.GetComponent<ISelectable>().Deselect();
                 }
+
+                selectedGameObject = null;
             }
+        
+
         }
 
 		private void FixedUpdate()
@@ -41,25 +42,24 @@ namespace TowersNoDragons.Core
                     return;
                 }
 
-                //if the mouse points at any Selectable object
-                hitGround = false;
-                if (selectedGameObject == hit.collider.gameObject) { return; }
-          
-				else if(selectedGameObject != null)
+                else if(selectedGameObject == hit.collider.gameObject) { return; }
+
+                else if (selectedGameObject!= null)
 				{
-                    if(selectedGameObject.GetComponentInParent<BuildHandler>() == null) { selectedGameObject = null; return; }
-                    selectedGameObject.GetComponentInParent<BuildHandler>().DisplayBuildPanel();
+                    selectedGameObject.GetComponent<ISelectable>().Deselect();
                     selectedGameObject = hit.collider.gameObject;
+                    selectedGameObject.GetComponent<ISelectable>().Select();
                 }
 
 				else
 				{
                     selectedGameObject = hit.collider.gameObject;
+                    selectedGameObject.GetComponent<ISelectable>().Select();
                 }
 
-                selectedGameObject.GetComponentInParent<BuildHandler>().DisplayBuildPanel();
-
-
+                //if the mouse points at any Selectable object
+                hitGround = false;
+               
             }
         }
 	}

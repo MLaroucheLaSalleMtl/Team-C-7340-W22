@@ -7,8 +7,9 @@ namespace TowersNoDragons.TowerTypes
     {
         [SerializeField] private float towerRange = 5f; //tower range
         [SerializeField] private int towerPrice = 100; //gold
-        [SerializeField] int startingLevel = 1;
-        [SerializeField] float attackDelay = 2f;
+        [SerializeField] private float attackDelay = 2f; //attack cooldown
+
+        private int startingLevel = 1;
 
         //for upgrades
         [Header("Level 2 Stats")][SerializeField] float level_2_Damage = 5f;

@@ -1,3 +1,11 @@
+/*
+ * Main input controller 
+ * for the camera movement
+ * mouse clicks
+ * scroll wheel for camera zoom
+ */
+
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,9 +25,8 @@ namespace TowersNoDragons.Input
 		private Vector2 movementDirection = new Vector2();
 		private ScrollDirection scroll = ScrollDirection.No_Scroll;
 
+		public event Action OnPause;
 
-
-		//TODO:consider adding the input to the "persistent object"
 		private void Awake()
 		{
 			Instance = this;
@@ -51,6 +58,14 @@ namespace TowersNoDragons.Input
 			}
 		}
 
+		//Game is either paused or resumed on the ESC button.
+		public void OnEscape(InputAction.CallbackContext ctx)
+		{
+			if (ctx.performed)
+			{
+				OnPause.Invoke();
+			}
+		}
 
 		#region Inputs_Region
 
@@ -83,7 +98,7 @@ namespace TowersNoDragons.Input
 			
 		}
 
-		#endregion
+		
 
 		//Mouse Position 
 		public Vector2 GetMousePosition()
@@ -96,6 +111,8 @@ namespace TowersNoDragons.Input
 		{
 			return Mouse.current.leftButton.wasReleasedThisFrame;
 		}
+
+		#endregion
 	}
 }
 

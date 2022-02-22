@@ -1,10 +1,14 @@
+/*
+ * The arher tower is just a stand for the actual archer.
+ */
+
 using UnityEngine;
 
 namespace TowersNoDragons.Towers
 {
 	public class ArcherTower : Tower
 	{
-		[SerializeField] Archer archer = null; //TODO: think about changing it to an array for upgrades and more archers
+		[SerializeField] Archer archer = null;
 
 
 		protected override void AttackTarget()
