@@ -21,6 +21,15 @@ namespace TowersNoDragons.Towers
 		{
 			archer.StopAttacking();
 		}
+
+		public override void UpgradeTower()
+		{
+			base.UpgradeTower();
+			//upgrade dmg
+			//upgrade range
+			//upgrade fire rate
+			//add another archer?
+		}
 	}
 }
 

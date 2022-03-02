@@ -1,6 +1,6 @@
 using UnityEngine;
 using TowersNoDragons.Input;
-using TowersNoDragons.UI;
+using UnityEngine.EventSystems;
 
 namespace TowersNoDragons.Core
 {
@@ -16,6 +16,8 @@ namespace TowersNoDragons.Core
 
 		private void Update()
 		{
+            if (EventSystem.current.IsPointerOverGameObject()) { return; } //over UI element
+
             //if the mouse points at the ground and is clicked
             if (InputController.Instance.MouseClick() && hitGround)
             {
@@ -26,12 +28,12 @@ namespace TowersNoDragons.Core
 
                 selectedGameObject = null;
             }
-        
-
         }
 
 		private void FixedUpdate()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) { return; } //over UI element
+
             ray = Camera.main.ScreenPointToRay(InputController.Instance.GetMousePosition());
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
             {
@@ -42,7 +44,7 @@ namespace TowersNoDragons.Core
                     return;
                 }
 
-                else if(selectedGameObject == hit.collider.gameObject) { return; }
+                else if(selectedGameObject == hit.collider.gameObject) { return; } //same object select
 
                 else if (selectedGameObject!= null)
 				{

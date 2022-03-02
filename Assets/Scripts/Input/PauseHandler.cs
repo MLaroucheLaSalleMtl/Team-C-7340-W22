@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TowersNoDragons.Input;
 
 
 namespace TowersNoDragons.UI
 {
-    public class UIHandler : MonoBehaviour
+    public class PauseHandler : MonoBehaviour
     {
         [SerializeField] private GameObject pausePanel;
 

@@ -19,7 +19,8 @@ namespace TowersNoDragons.Towers
 		[SerializeField] private float searchRadiusOffset = 1f; //offset collision to compensate enemy radius of collision
 		[Header("Spawning")]
 		[SerializeField] float spawningHeight_Y = 4.8f; //based on the tower height, determine the required height to be placed above ground								 
-
+		[Header("Upgrades")]
+		[SerializeField] private ParticleSystem upgradeVFX = null; //tower upgrade vfx
 
 		//Attacking variables
 		private Collider[] enemyCollided;
@@ -27,8 +28,16 @@ namespace TowersNoDragons.Towers
 		private bool isAttacking = false;
 		private float attackTimer = 0f; //timer to track the attack cooldown
 		private bool canAttack = false;
+
+		//Building vars
 		private BuildHandler buildingBase = null; //the reference to the base that built this tower | when we sell the tower it should "show" again
 		private readonly float spawningSpeed = 35f; //how fast the towe spawns from bottom up
+
+		public BuildHandler BuildingBase { get => buildingBase; }
+
+		//Tower lv vars
+		public const int TOWER_MAX_LEVEL = 2;
+		private int currentTowerLevel = 1; //tower level
 
 		private void Start()
 		{
@@ -147,10 +156,33 @@ namespace TowersNoDragons.Towers
 			canAttack = true; //fully spawned
 		}
 
+		public int GetTowerPrice()
+        {
+			return towerType.GetTowerPrice();
+        }
+
+		public int GetTowerLv()
+		{
+			return currentTowerLevel;
+		}
+
+		public int GetUpgradePrice()
+		{
+			return this.towerType.GetUpgradePrice();
+		}
+
 		//keep reference to the exact build spot
 		public void AssignBuildingPlace(BuildHandler buildHandler)
 		{
 			buildingBase = buildHandler;
+		}
+
+		public virtual void UpgradeTower()
+		{
+			//upgrade the tower's stats
+			//you must override this method / add to it more functionalities for every tower
+			currentTowerLevel++;
+			upgradeVFX.Play();
 		}
 		
 		/// <summary>
@@ -161,18 +193,12 @@ namespace TowersNoDragons.Towers
 		protected abstract void StopAttacking();
 
 
-
-
-
-
-
-
 		//Testing tool to visualize the range in the editor
-		private void OnDrawGizmos()
-		{
-			if(towerType == null) { return; }
-			Gizmos.DrawWireSphere(transform.position, towerType.GetTowerRange());
-		}
+		//private void OnDrawGizmos()
+		//{
+		//	if(towerType == null) { return; }
+		//	Gizmos.DrawWireSphere(transform.position, towerType.GetTowerRange());
+		//}
 	}
 }
 

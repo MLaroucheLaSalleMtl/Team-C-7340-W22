@@ -58,14 +58,7 @@ namespace TowersNoDragons.Input
 			}
 		}
 
-		//Game is either paused or resumed on the ESC button.
-		public void OnEscape(InputAction.CallbackContext ctx)
-		{
-			if (ctx.performed)
-			{
-				OnPause.Invoke();
-			}
-		}
+		
 
 		#region Inputs_Region
 
@@ -110,6 +103,15 @@ namespace TowersNoDragons.Input
 		public bool MouseClick()
 		{
 			return Mouse.current.leftButton.wasReleasedThisFrame;
+		}
+
+		//Game is either paused or resumed on the ESC button.
+		public void OnEscape(InputAction.CallbackContext ctx)
+		{
+			if (ctx.performed)
+			{
+				OnPause.Invoke();
+			}
 		}
 
 		#endregion

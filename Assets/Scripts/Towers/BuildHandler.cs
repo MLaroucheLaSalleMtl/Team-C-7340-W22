@@ -3,14 +3,19 @@
  */
 using TowersNoDragons.Towers;
 using UnityEngine;
+using System;
+using TowersNoDragons.Economy;
 
 namespace TowersNoDragons.UI
 {
 	public class BuildHandler : MonoBehaviour,ISelectable
 	{
+
 		[SerializeField] private GameObject BuildPanel = null;
+		[SerializeField] private GameObject selectionCircleSprite = null;
 		[SerializeField] private Tower archerTower = null;
 		[SerializeField] private Tower crystalTower = null;
+		
 		//TO ADD: LongRangeTower
 		//TO ADD: ScorpionTower
 
@@ -25,20 +30,27 @@ namespace TowersNoDragons.UI
 			spawnPos.y = lowest_Y_Spawn;
 		}
 
-		
-
 		public void BuildArcherTower()
 		{
-			var instance = Instantiate(archerTower, spawnPos, Quaternion.identity);
-			instance.GetComponent<Tower>().AssignBuildingPlace(this);
-			gameObject.SetActive(false);
+            if (archerTower.GetTowerPrice() <= EconomyHandler.Instance.GetCurrentGold())
+            {
+				var instance = Instantiate(archerTower, spawnPos, Quaternion.identity);
+				instance.GetComponent<Tower>().AssignBuildingPlace(this);
+				gameObject.SetActive(false);
+				EconomyHandler.Instance.SubtractGold(archerTower.GetTowerPrice());
+			}
 		}
 
 		public void BuildCrystalTower()
 		{
-			var instance = Instantiate(crystalTower, spawnPos, Quaternion.identity);
-			instance.GetComponent<Tower>().AssignBuildingPlace(this);
-			gameObject.SetActive(false);
+			if(crystalTower.GetTowerPrice() <= EconomyHandler.Instance.GetCurrentGold())
+            {
+				var instance = Instantiate(crystalTower, spawnPos, Quaternion.identity);
+				instance.GetComponent<Tower>().AssignBuildingPlace(this);
+				gameObject.SetActive(false);
+				EconomyHandler.Instance.SubtractGold(crystalTower.GetTowerPrice());
+			}
+			
 		}
 
 		public void Select()
@@ -46,6 +58,7 @@ namespace TowersNoDragons.UI
 			if (isBuildPanelShown) { return; }
 			isBuildPanelShown = true;
 			BuildPanel.SetActive(true);
+			selectionCircleSprite.SetActive(true);
 		}
 
 		public void Deselect()
@@ -53,6 +66,7 @@ namespace TowersNoDragons.UI
 			if (!isBuildPanelShown) { return; }
 			isBuildPanelShown = false; ;
 			BuildPanel.SetActive(false);
+			selectionCircleSprite.SetActive(false);
 		}
 
 		//build LongRangeTower

@@ -10,12 +10,13 @@ namespace TowersNoDragons.AI
 	public class Health : MonoBehaviour
 	{
 		private EnemyEventHandler eventHandler;
-
+		private Enemy currentEnemy;
 		private bool isDead = false;
 
 		private void Awake()
 		{
 			eventHandler = GetComponent<EnemyEventHandler>();
+			currentEnemy = GetComponent<Enemy>();
 		}
 
 		//Event notification for the UI
@@ -26,7 +27,7 @@ namespace TowersNoDragons.AI
 			if (newHealth <= 0 && !isDead)
 			{
 				isDead = true;
-				eventHandler.OnDeathEvent();
+				eventHandler.OnDeathEvent(currentEnemy.GetBounty());
 				Destroy(gameObject); //TODO: MAKE A DEATH ANIMATION /RAGDOLL
 			}
 

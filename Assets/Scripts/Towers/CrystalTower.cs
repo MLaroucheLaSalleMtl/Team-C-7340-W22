@@ -11,6 +11,7 @@ namespace TowersNoDragons.Towers
 {
 	public class CrystalTower : Tower
 	{
+		[Header("Crystal Tower Prefs")]
 		[SerializeField] private LineRenderer lineRenderer = null;
 		[SerializeField] private float damage = 5f; //per frame
 		[SerializeField] private DamageTypes damageType = DamageTypes.Magical;
@@ -27,6 +28,11 @@ namespace TowersNoDragons.Towers
 		protected override void StopAttacking()
 		{
 			lineRenderer.enabled = false;
+		}
+
+		public override void UpgradeTower()
+		{
+			base.UpgradeTower();
 		}
 	}
 }

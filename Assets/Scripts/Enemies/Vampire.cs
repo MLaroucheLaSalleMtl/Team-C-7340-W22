@@ -6,7 +6,6 @@ namespace TowersNoDragons.AI
 {
 	public class Vampire : Enemy
 	{
-
 	}
 }
 

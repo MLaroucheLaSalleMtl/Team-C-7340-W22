@@ -6,6 +6,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using TowersNoDragons.Core;
+using TowersNoDragons.Economy;
 
 namespace TowersNoDragons.AI
 {
@@ -34,10 +35,11 @@ namespace TowersNoDragons.AI
 		}
 
 
-		public void OnDeathEvent()
+		public void OnDeathEvent(int bountyAmount)
 		{
 			OnDeath.Invoke(); //notify the visual indicator and animation about the death of the enemy
 			WinLossHandler.Instance.OnTowerKill(); //notify the manager
+			EconomyHandler.Instance.AddGold(bountyAmount); // notify the Economy handler of the bounty to add
 		}
 		
 

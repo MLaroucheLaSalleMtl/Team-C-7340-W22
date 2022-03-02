@@ -22,7 +22,6 @@ namespace TowersNoDragons.SceneManagement
 
         public void QuitGame()
         {
-            print("Game has been exited.");
             Application.Quit();
         }
     }

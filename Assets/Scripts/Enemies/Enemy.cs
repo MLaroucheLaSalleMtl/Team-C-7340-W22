@@ -30,8 +30,8 @@ namespace TowersNoDragons.AI
 		private float magicResistance;
 		private float hp;
 
-		//cache
-		private void Awake()
+        //cache
+        private void Awake()
 		{
 			agent = GetComponent<NavMeshAgent>();
 			eventHandler = GetComponent<EnemyEventHandler>();
@@ -114,6 +114,11 @@ namespace TowersNoDragons.AI
 
 			eventHandler.OnTakeDamageEvent(amount: this.hp,damagePercent: percentDamage);
 		}
+
+		public int GetBounty()
+        {
+			return enemyType.Bounty;
+        }
 
 		#region Testing_Zone_ScorpionTower
 		//applies only to the Scorpion Tower

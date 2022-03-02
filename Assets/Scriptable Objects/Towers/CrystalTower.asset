@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: CrystalTower
   m_EditorClassIdentifier: 
   towerRange: 20
-  towerPrice: 100
-  startingLevel: 1
+  towerPrice: 200
   attackDelay: 0
-  level_2_Damage: 5
+  upgradePrice: 500
