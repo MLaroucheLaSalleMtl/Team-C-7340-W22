@@ -23,12 +23,13 @@ namespace TowersNoDragons.AI
 
 		private int currentPathIndex = 0;
 		private NavMeshAgent agent = null;
-		private EnemyEventHandler eventHandler;
+		protected EnemyEventHandler eventHandler;
 
 		//stats
 		private float baseArmor;
 		private float magicResistance;
-		private float hp;
+		protected float hp;
+		protected float maxHp;
 
         //cache
         private void Awake()
@@ -83,6 +84,7 @@ namespace TowersNoDragons.AI
 			this.baseArmor = this.enemyType.BaseArmor;
 			this.magicResistance = this.enemyType.MagicResistance;
 			this.hp = this.enemyType.Hp;
+			this.maxHp = this.hp;
 		}
 
 		/// <summary>

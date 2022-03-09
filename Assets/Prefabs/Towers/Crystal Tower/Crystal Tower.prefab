@@ -326,9 +326,16 @@ MonoBehaviour:
   searchRadiusOffset: 1
   spawningHeight_Y: 25
   upgradeVFX: {fileID: 7680436515745845339}
+  destroyTowerVFX: {fileID: 198499209413112314, guid: f01c1eba69de19e44b04d8d651aaac37,
+    type: 3}
+  creationTowerVFX: {fileID: 198681264470032530, guid: aa8d6482d70a23445b4b2a928ed1b845,
+    type: 3}
+  crystalTowerMeshRenderer: {fileID: 7554110573018593295}
   lineRenderer: {fileID: 2548011332464366712}
   damage: 0.25
   damageType: 1
+  levelTwoLaserColor: {fileID: 2100000, guid: 6f06b7fc8c59d844abfb0538efcd00fd, type: 2}
+  levelTwoDamage: 0.15
 --- !u!4 &6015905586396374553 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5571825054969940777, guid: be440e11cbbff2245aebe264311ce830,

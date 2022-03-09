@@ -60,6 +60,14 @@ namespace TowersNoDragons.Towers
 
 		}
 
+		//make room for a new archer when upgraded
+		public void MoveExistingArcher()
+		{
+			Vector3 makeRoomOffset = transform.position;
+			makeRoomOffset.x -= 1f;
+			transform.position = makeRoomOffset;
+		}
+
 
 	}
 }

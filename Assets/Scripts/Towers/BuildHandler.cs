@@ -3,8 +3,10 @@
  */
 using TowersNoDragons.Towers;
 using UnityEngine;
-using System;
 using TowersNoDragons.Economy;
+using TMPro;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace TowersNoDragons.UI
 {
@@ -15,19 +17,74 @@ namespace TowersNoDragons.UI
 		[SerializeField] private GameObject selectionCircleSprite = null;
 		[SerializeField] private Tower archerTower = null;
 		[SerializeField] private Tower crystalTower = null;
+
+		[Header("Tower Prices and buttons")]
+		[SerializeField] private Button archerTowerbtn = null;
+		[SerializeField] private TMP_Text archerTowerPriceTxt = null;
+		[SerializeField] private Button crystalTowerbtn = null;
+		[SerializeField] private TMP_Text crystalTowerPriceTxt = null;
 		
-		//TO ADD: LongRangeTower
-		//TO ADD: ScorpionTower
 
-		[SerializeField] private float lowest_Y_Spawn = -10f;
+		private Dictionary<Button, int> buildButtons = new Dictionary<Button, int>(); //library of towers
 
+
+		private float lowest_Y_Spawn = -10f;
 		private bool isBuildPanelShown = false;
 		private Vector3 spawnPos;
+
+		//Tower prices
+		private int archerTowerPrice = 0;
+		private int crystalTowerPrice = 0;
 
 		private void Start()
 		{
 			spawnPos = transform.position;
 			spawnPos.y = lowest_Y_Spawn;
+
+			InitPrices();
+		}
+
+		private void OnEnable()
+		{
+			EconomyHandler.Instance.OnGoldChange += UpdateButtonState;
+		}
+
+		private void OnDisable()
+		{
+			EconomyHandler.Instance.OnGoldChange -= UpdateButtonState;
+		}
+
+		private void InitPrices()
+		{
+			archerTowerPrice = archerTower.GetTowerPrice();
+			crystalTowerPrice = crystalTower.GetTowerPrice();
+
+			archerTowerPriceTxt.text = archerTowerPrice.ToString();
+			crystalTowerPriceTxt.text = crystalTowerPrice.ToString();
+
+			//add tower buttons and their prices to the library
+			buildButtons.Add(archerTowerbtn, archerTowerPrice);
+			buildButtons.Add(crystalTowerbtn, crystalTowerPrice);
+		}
+
+		private void UpdateButtonState()
+		{
+			foreach(var ele in buildButtons)
+			{
+				if(ele.Value > EconomyHandler.Instance.GetCurrentGold())
+				{
+					ele.Key.interactable = false;
+				}
+				else 
+				{
+					ele.Key.interactable = true;
+				}
+			}
+		}
+
+		private void NotifyTowerCreationSmoke(Tower newTower)
+		{
+			newTower.CreateSmokeEffectOnTowerBuy();
 		}
 
 		public void BuildArcherTower()
@@ -36,6 +93,7 @@ namespace TowersNoDragons.UI
             {
 				var instance = Instantiate(archerTower, spawnPos, Quaternion.identity);
 				instance.GetComponent<Tower>().AssignBuildingPlace(this);
+				NotifyTowerCreationSmoke(instance);
 				gameObject.SetActive(false);
 				EconomyHandler.Instance.SubtractGold(archerTower.GetTowerPrice());
 			}
@@ -47,10 +105,10 @@ namespace TowersNoDragons.UI
             {
 				var instance = Instantiate(crystalTower, spawnPos, Quaternion.identity);
 				instance.GetComponent<Tower>().AssignBuildingPlace(this);
+				NotifyTowerCreationSmoke(instance);
 				gameObject.SetActive(false);
 				EconomyHandler.Instance.SubtractGold(crystalTower.GetTowerPrice());
 			}
-			
 		}
 
 		public void Select()

@@ -8,27 +8,33 @@ namespace TowersNoDragons.Towers
 {
 	public class ArcherTower : Tower
 	{
-		[SerializeField] Archer archer = null;
-
+		[SerializeField] private Archer[] archers = null;
 
 		protected override void AttackTarget()
 		{
 			//tell archer to rotate towards the target and assign a target
-			archer.Attack(target);
+			foreach(var ele in archers)
+			{
+				if (!ele.gameObject.activeSelf) { continue; }
+				ele.Attack(target);
+			}
 		}
 
 		protected override void StopAttacking()
 		{
-			archer.StopAttacking();
+			foreach (var ele in archers)
+			{
+				if (!ele.gameObject.activeSelf) { continue; }
+				ele.StopAttacking();
+			}
 		}
 
 		public override void UpgradeTower()
 		{
 			base.UpgradeTower();
-			//upgrade dmg
-			//upgrade range
-			//upgrade fire rate
-			//add another archer?
+			archers[0].MoveExistingArcher(); //make room for a new archer
+			archers[1].gameObject.SetActive(true); //second archer
+			StopAttacking();
 		}
 	}
 }

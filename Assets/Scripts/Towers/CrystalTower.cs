@@ -12,9 +12,15 @@ namespace TowersNoDragons.Towers
 	public class CrystalTower : Tower
 	{
 		[Header("Crystal Tower Prefs")]
+		[SerializeField] private MeshRenderer crystalTowerMeshRenderer = null;
 		[SerializeField] private LineRenderer lineRenderer = null;
 		[SerializeField] private float damage = 5f; //per frame
 		[SerializeField] private DamageTypes damageType = DamageTypes.Magical;
+
+		[Header("Upgrades")]
+		[SerializeField] private Material levelTwoLaserColor = null;
+		[SerializeField] private float levelTwoDamage = 0.02f;
+		
 
 		protected override void AttackTarget()
 		{
@@ -33,6 +39,15 @@ namespace TowersNoDragons.Towers
 		public override void UpgradeTower()
 		{
 			base.UpgradeTower();
+
+			//Crytal tower implementation
+			this.damage += levelTwoDamage;
+			lineRenderer.material = levelTwoLaserColor;
+			var newMats = crystalTowerMeshRenderer.materials; //Create and assign a new array of materials
+			newMats[4] = levelTwoLaserColor;				  //the color of the crystal
+			crystalTowerMeshRenderer.materials = newMats;	  //Create and assign a new array of materials
+
+
 		}
 	}
 }

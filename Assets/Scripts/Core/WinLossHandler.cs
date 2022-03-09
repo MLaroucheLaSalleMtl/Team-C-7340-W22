@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 namespace TowersNoDragons.Core
 {
@@ -9,6 +10,7 @@ namespace TowersNoDragons.Core
         [SerializeField] private int lives = 10;
         [SerializeField] private int enemiesEliminated = 0;
         [SerializeField] private int totalAmountOfEnemies;
+        [SerializeField] private TMP_Text livesText = null;
 
         public static WinLossHandler Instance = null;
 
@@ -23,10 +25,16 @@ namespace TowersNoDragons.Core
             }
         }
 
-        //Enemy crossed the finish line
-        public void EnemyDetected()
+		private void Start()
+		{
+            RefreshLives();
+        }
+
+		//Enemy crossed the finish line
+		public void EnemyDetected()
         {
             lives--;
+            RefreshLives();
             enemiesEliminated++;
             ProcessWinLoss();
         }
@@ -52,9 +60,13 @@ namespace TowersNoDragons.Core
             print("You won the game!");
         }
 
+        private void RefreshLives()
+        {
+            livesText.text = lives.ToString();
+        }
 
         private void ProcessWinLoss()
-		{
+        {
             if (lives <= 0)
             {
                 GameLoss();
@@ -65,6 +77,6 @@ namespace TowersNoDragons.Core
                 GameWin();
             }
         }
-	}
+    }
 }
 

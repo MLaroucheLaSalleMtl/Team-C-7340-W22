@@ -48,10 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 55
-  damage: 20
+  damage: 100
   damageType: 0
   rb: {fileID: 6046015444396689752}
-  target: {fileID: 0}
 --- !u!65 &845654584560521037
 BoxCollider:
   m_ObjectHideFlags: 0

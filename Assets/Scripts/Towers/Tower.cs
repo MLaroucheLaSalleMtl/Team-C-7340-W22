@@ -21,6 +21,10 @@ namespace TowersNoDragons.Towers
 		[SerializeField] float spawningHeight_Y = 4.8f; //based on the tower height, determine the required height to be placed above ground								 
 		[Header("Upgrades")]
 		[SerializeField] private ParticleSystem upgradeVFX = null; //tower upgrade vfx
+		[Header("VFX")]
+		[SerializeField] private ParticleSystem destroyTowerVFX = null;
+		[SerializeField] private ParticleSystem creationTowerVFX = null;
+
 
 		//Attacking variables
 		private Collider[] enemyCollided;
@@ -80,6 +84,21 @@ namespace TowersNoDragons.Towers
 				}
 			}
 		}
+		#region TOWER_VFX
+		public void CreateSmokeEffectOnTowerSell()
+		{
+			var instance = Instantiate(destroyTowerVFX, BuildingBase.transform);
+			Destroy(instance, 1.5f); //destroy the smoke trail effect after tower destruction
+		}
+
+		public void CreateSmokeEffectOnTowerBuy()
+		{
+			var instance = Instantiate(creationTowerVFX, BuildingBase.transform);
+			instance.transform.SetParent(null);
+			Destroy(instance, 1.5f); //destroy the smoke trail effect after tower destruction
+		}
+
+		#endregion
 
 		//The actual attack call based on the attackTimer 
 		private void ProcessAttack()

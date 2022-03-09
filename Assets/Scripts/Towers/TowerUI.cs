@@ -56,6 +56,7 @@ namespace TowersNoDragons.UI
 			currentTower.BuildingBase.gameObject.SetActive(true);
 			this.Deselect();
 			EconomyHandler.Instance.AddGold(currentTower.GetTowerPrice());
+			currentTower.CreateSmokeEffectOnTowerSell();
 			Destroy(currentTower.gameObject);
 		}
 

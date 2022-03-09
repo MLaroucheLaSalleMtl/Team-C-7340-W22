@@ -670,7 +670,7 @@ PrefabInstance:
     - target: {fileID: -9164362376002471951, guid: ba001b8db0e5ba2468d68c73ed772d50,
         type: 3}
       propertyPath: m_AutoBraking
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -9164362376002471951, guid: ba001b8db0e5ba2468d68c73ed772d50,
         type: 3}
@@ -866,3 +866,4 @@ MonoBehaviour:
   enemyType: {fileID: 11400000, guid: a04d708bec0008244b11c742e9b85a93, type: 2}
   NormalAgent: {fileID: 527570212728209870}
   ragDoll: {fileID: 5324739712556247860}
+  hpRegen: 0.09
