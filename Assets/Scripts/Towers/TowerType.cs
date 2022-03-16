@@ -30,7 +30,6 @@ namespace TowersNoDragons.TowerTypes
         public int GetUpgradePrice()
 		{
             return upgradePrice;
-
         }
     }
 }

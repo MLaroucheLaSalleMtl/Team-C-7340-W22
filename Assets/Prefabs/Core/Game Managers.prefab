@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1937123175}
   - component: {fileID: 1937123178}
   - component: {fileID: 1937123179}
+  - component: {fileID: 1937123182}
   m_Layer: 0
   m_Name: Game Managers
   m_TagString: Untagged
@@ -69,6 +70,7 @@ MonoBehaviour:
   lives: 1
   enemiesEliminated: 0
   totalAmountOfEnemies: 0
+  livesText: {fileID: 0}
 --- !u!114 &1937123175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,4 +108,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc472c874eb45c642be38ea9332dd0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGold: 1000
+  playerGold: 10000
+  playerGoldTxt: {fileID: 0}
+--- !u!114 &1937123182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8201575018086040062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71549fde72d2cee4ab13bca453f02438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playableDirector: {fileID: 0}
+  startTime: 15
+  defaultTime: 10
+  waveSlider: {fileID: 0}
+  textAmountPrefab: {fileID: 1261262564160446969, guid: 758629fe46d7f974f85c3e7d57ed6bf6,
+    type: 3}
+  textContainer: {fileID: 0}

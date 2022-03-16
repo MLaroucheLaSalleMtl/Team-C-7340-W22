@@ -50,14 +50,12 @@ namespace TowersNoDragons.Core
         {
             Time.timeScale = 0;
             losePanel.SetActive(true);
-            print("You lost the game!");
         }
 
         private void GameWin()
         {
             Time.timeScale = 0;
             winPanel.SetActive(true);
-            print("You won the game!");
         }
 
         private void RefreshLives()

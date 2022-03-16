@@ -15,7 +15,10 @@ namespace TowersNoDragons.AI
 			//TODO: Add healing VFX
 		}
 
-
+		public override string ToString()
+		{
+			return "Physical";
+		}
 	}
 }
 

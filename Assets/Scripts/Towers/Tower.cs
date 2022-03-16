@@ -27,11 +27,14 @@ namespace TowersNoDragons.Towers
 
 
 		//Attacking variables
-		private Collider[] enemyCollided;
+		protected float enemyOffset = 1.5f;
 		protected Enemy target = null;
+
+		private Collider[] enemyCollided;
 		private bool isAttacking = false;
 		private float attackTimer = 0f; //timer to track the attack cooldown
 		private bool canAttack = false;
+		
 
 		//Building vars
 		private BuildHandler buildingBase = null; //the reference to the base that built this tower | when we sell the tower it should "show" again

@@ -1,14 +1,15 @@
 using UnityEngine;
 using TowersNoDragons.Input;
 using UnityEngine.EventSystems;
+using TowersNoDragons.UI;
 
 namespace TowersNoDragons.Core
 {
     public class Selector : MonoBehaviour
     {
-        [SerializeField] private GameObject selectedGameObject = null;
-        [SerializeField] private LayerMask layerMask = new LayerMask();
+        [SerializeField] private LayerMask layerMask = new LayerMask(); //ground + selectables
 
+        private ISelectable selectedGameObject = null;
         private Ray ray;
         private RaycastHit hit;
         private bool hitGround = false;
@@ -18,17 +19,26 @@ namespace TowersNoDragons.Core
 		{
             if (EventSystem.current.IsPointerOverGameObject()) { return; } //over UI element
 
-            //if the mouse points at the ground and is clicked
-            if (InputController.Instance.MouseClick() && hitGround)
+            //Mouse is over the tower and te user clicks on it
+            if (selectedGameObject != null && InputController.Instance.MouseClick() && selectedGameObject is TowerUI && !hitGround)
             {
-                if(selectedGameObject != null)
+                selectedGameObject.Select();
+            }
+
+            //if the mouse points at the ground and is clicked
+            else if (InputController.Instance.MouseClick() && hitGround)
+            {
+                if (selectedGameObject != null)
 				{
-                    selectedGameObject.GetComponent<ISelectable>().Deselect();
+                    selectedGameObject.Deselect();
+                    
                 }
 
                 selectedGameObject = null;
             }
-        }
+
+			
+		}
 
 		private void FixedUpdate()
         {
@@ -37,29 +47,40 @@ namespace TowersNoDragons.Core
             ray = Camera.main.ScreenPointToRay(InputController.Instance.GetMousePosition());
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
             {
-                //if the mouse points at the ground
-                if (hit.collider.CompareTag("Ground"))
-                {
-                    hitGround = true;
-                    return;
-                }
+				//if the mouse points at the ground
+				if (hit.collider.CompareTag("Ground"))
+				{
+					hitGround = true;
+					return;
+				}
 
-                else if(selectedGameObject == hit.collider.gameObject) { return; } //same object select
+				ISelectable hitObject = hit.collider.gameObject.GetComponent<ISelectable>();
+
+                 //Mouse is over the same selected object
+                if (selectedGameObject == hitObject) { return; }
+
+                else if (selectedGameObject == null)
+                {
+                    selectedGameObject = hitObject;
+
+                    if (!(hitObject is TowerUI))
+					{
+                        selectedGameObject = hitObject;
+                        selectedGameObject.Select();
+                    }
+                }
 
                 else if (selectedGameObject!= null)
 				{
-                    selectedGameObject.GetComponent<ISelectable>().Deselect();
-                    selectedGameObject = hit.collider.gameObject;
-                    selectedGameObject.GetComponent<ISelectable>().Select();
+                    selectedGameObject.Deselect();
+                    selectedGameObject = hitObject;
+                    if (!(hitObject is TowerUI))
+					{
+                        selectedGameObject.Select();
+                    }
                 }
 
-				else
-				{
-                    selectedGameObject = hit.collider.gameObject;
-                    selectedGameObject.GetComponent<ISelectable>().Select();
-                }
-
-                //if the mouse points at any Selectable object
+                //if the mouse points at any Selectable object and not at the ground
                 hitGround = false;
                
             }

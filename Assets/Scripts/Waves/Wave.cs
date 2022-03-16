@@ -23,10 +23,6 @@ namespace TowersNoDragons.Waves
 
             public int AmountToSpawn { get => amountToSpawn;}
 
-            public int GetAmount()
-			{
-				return amountToSpawn;
-			}
 
 			public Enemy GetEnemy()
 			{
@@ -44,7 +40,7 @@ namespace TowersNoDragons.Waves
 			totalAmount = 0;
 			foreach(var ele in enemiesToSpawn)
             {
-				totalAmount += ele.GetAmount();
+				totalAmount += ele.AmountToSpawn;
             }
         }
 

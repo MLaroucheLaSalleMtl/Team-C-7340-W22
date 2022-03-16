@@ -12,6 +12,7 @@ namespace TowersNoDragons.Towers
 	public class CrystalTower : Tower
 	{
 		[Header("Crystal Tower Prefs")]
+		
 		[SerializeField] private MeshRenderer crystalTowerMeshRenderer = null;
 		[SerializeField] private LineRenderer lineRenderer = null;
 		[SerializeField] private float damage = 5f; //per frame
@@ -21,13 +22,19 @@ namespace TowersNoDragons.Towers
 		[SerializeField] private Material levelTwoLaserColor = null;
 		[SerializeField] private float levelTwoDamage = 0.02f;
 		
+		[Header("VFX")]
+		[SerializeField] private ParticleSystem hitEffectVFX = null;
+		[SerializeField] private ParticleSystemRenderer hitEffectVFXRenderer = null;
 
 		protected override void AttackTarget()
 		{
 			if(base.target == null) { StopAttacking(); }
 			lineRenderer.enabled = true;
 			lineRenderer.SetPosition(0, lineRenderer.transform.position); //start pos
-			lineRenderer.SetPosition(1, base.target.transform.position); //target pos /end pos
+			lineRenderer.SetPosition(1, new Vector3(base.target.transform.position.x, (base.target.transform.position.y + base.enemyOffset), base.target.transform.position.z)); //target pos /end pos
+			hitEffectVFX.transform.position = new Vector3(base.target.transform.position.x,(base.target.transform.position.y + base.enemyOffset), base.target.transform.position.z);
+			if (!hitEffectVFX.isEmitting) { hitEffectVFX.Play(); }
+			
 			base.target.TakeDamage(damage, damageType);
 		}
 
@@ -45,9 +52,8 @@ namespace TowersNoDragons.Towers
 			lineRenderer.material = levelTwoLaserColor;
 			var newMats = crystalTowerMeshRenderer.materials; //Create and assign a new array of materials
 			newMats[4] = levelTwoLaserColor;				  //the color of the crystal
-			crystalTowerMeshRenderer.materials = newMats;	  //Create and assign a new array of materials
-
-
+			crystalTowerMeshRenderer.materials = newMats;     //Create and assign a new array of materials
+			hitEffectVFXRenderer.material = levelTwoLaserColor;
 		}
 	}
 }

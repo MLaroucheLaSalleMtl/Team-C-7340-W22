@@ -8,9 +8,11 @@ namespace TowersNoDragons.UI
 {
 	public class TowerUI : MonoBehaviour, ISelectable
 	{
+		[SerializeField] private GameObject selectionCircleSprite = null;
 		[SerializeField] private GameObject SellUpgradePanel = null;
 		[SerializeField] private TMP_Text towerLvTxt = null;
 		[SerializeField] private Button upgradeButton = null;
+		[SerializeField] private TMP_Text upgradePriceTxt = null;
 
 		private bool isPanelShown = false;
 		private Tower currentTower;
@@ -24,6 +26,7 @@ namespace TowersNoDragons.UI
 		private void Start()
 		{
 			UpdateTowerLevelTxt();
+			upgradePriceTxt.text = this.currentTower.GetUpgradePrice().ToString();
 		}
 
 		private void UpdateTowerLevelTxt()
@@ -42,6 +45,7 @@ namespace TowersNoDragons.UI
 			if (!isPanelShown) { return; }
 			isPanelShown = false;
 			SellUpgradePanel.SetActive(false);
+			selectionCircleSprite.SetActive(false);
 		}
 
 		public void Select()
@@ -49,6 +53,7 @@ namespace TowersNoDragons.UI
 			if (isPanelShown) { return; }
 			isPanelShown = true;
 			SellUpgradePanel.SetActive(true);
+			selectionCircleSprite.SetActive(true);
 		}
 
 		public void SellTower()

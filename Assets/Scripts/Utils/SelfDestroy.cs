@@ -1,23 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace TowersNoDragons.Utils
+public class SelfDestroy : MonoBehaviour
 {
-	public class SelfDestroy : MonoBehaviour
+    [SerializeField] private ParticleSystem mainParticleSystem = null;
+
+	private float waitTime;
+
+	private void Awake()
 	{
-		[SerializeField] private ParticleSystem mainParticleSystem = null;
+		waitTime = mainParticleSystem.main.duration;
+	}
 
-		private float waitTime;
-
-		private void Awake()
-		{
-			waitTime = mainParticleSystem.main.duration;
-		}
-
-		private void Start()
-		{
-			Destroy(gameObject, waitTime);
-		}
+	private void Start()
+	{
+		Destroy(gameObject, waitTime);
 	}
 }
-
-
