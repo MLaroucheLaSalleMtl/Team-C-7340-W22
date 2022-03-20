@@ -38,8 +38,7 @@ namespace TowersNoDragons.Projectiles
 			}
 			else
 			{
-				rb.isKinematic = true;
-				Destroy(gameObject,4f); 
+				Destroy(gameObject);
 			}
 				
 		}

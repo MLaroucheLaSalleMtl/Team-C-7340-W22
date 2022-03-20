@@ -14,7 +14,7 @@ namespace TowersNoDragons.AI
 	{
 		[SerializeField] private EnemyEvent OnTakeDamage = null;
 		[SerializeField] private EnemyUiEvent OnUiUpdate = null;
-		[SerializeField] private UnityEvent OnDeath = null;
+		[SerializeField] private EnemyDeathEvent OnDeath = null;
 
 		#region UnityEvents_Classes_Definition
 
@@ -27,6 +27,11 @@ namespace TowersNoDragons.AI
 		public class EnemyUiEvent : UnityEvent<float>
 		{
 		}
+
+		[System.Serializable]
+		public class EnemyDeathEvent: UnityEvent<string>
+		{
+		}
 		#endregion
 
 		public void OnTakeDamageEvent(float amount, float damagePercent)
@@ -37,7 +42,8 @@ namespace TowersNoDragons.AI
 
 		public void OnDeathEvent(int bountyAmount)
 		{
-			OnDeath.Invoke(); //notify the visual indicator and animation about the death of the enemy
+			int randomDeathIndex = Random.Range(1,3);
+			OnDeath.Invoke("Death " + randomDeathIndex); //notify the visual indicator and animation about the death of the enemy
 			WinLossHandler.Instance.OnTowerKill(); //notify the manager
 			EconomyHandler.Instance.AddGold(bountyAmount); // notify the Economy handler of the bounty to add
 		}

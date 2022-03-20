@@ -54,7 +54,7 @@ namespace TowersNoDragons.Towers
 			{
 				if (!isPullProcess)
 				{
-					base.target.GetHookedAndPulled();
+					//base.target.GetHookedAndPulled();
 				}
 				
 				isPullProcess = true;

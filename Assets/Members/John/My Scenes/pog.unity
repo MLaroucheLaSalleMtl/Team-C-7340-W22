@@ -5527,7 +5527,7 @@ PrefabInstance:
     - target: {fileID: 8631939540250540912, guid: d9c4043a2194f7f498fd732b2d1cbe2f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8631939540250540912, guid: d9c4043a2194f7f498fd732b2d1cbe2f,
         type: 3}
@@ -11120,10 +11120,19 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1937123178}
+    - target: {fileID: 1765271855, guid: 4049f31999a4fa440b03447415b64039, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.09289551
+      objectReference: {fileID: 0}
     - target: {fileID: 2052977452, guid: 4049f31999a4fa440b03447415b64039, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 914097901}
+    - target: {fileID: 5609623003920679737, guid: 4049f31999a4fa440b03447415b64039,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5609623003976724672, guid: 4049f31999a4fa440b03447415b64039,
         type: 3}
       propertyPath: m_Pivot.x
@@ -11233,6 +11242,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameUICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609623004032438016, guid: 4049f31999a4fa440b03447415b64039,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.09289551
       objectReference: {fileID: 0}
     - target: {fileID: 5609623004895429931, guid: 4049f31999a4fa440b03447415b64039,
         type: 3}

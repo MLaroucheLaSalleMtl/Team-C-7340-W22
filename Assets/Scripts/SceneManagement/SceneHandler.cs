@@ -24,6 +24,16 @@ namespace TowersNoDragons.SceneManagement
         {
             Application.Quit();
         }
+
+        public void ResumeTime()
+        {
+            Time.timeScale = 1;
+        }
+
+        public void PauseTime()
+        {
+            Time.timeScale = 0;
+        }
     }
 }
 

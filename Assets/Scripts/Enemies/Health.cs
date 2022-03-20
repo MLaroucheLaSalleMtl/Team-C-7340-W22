@@ -11,7 +11,7 @@ namespace TowersNoDragons.AI
 	{
 		private EnemyEventHandler eventHandler;
 		private Enemy currentEnemy;
-		private bool isDead = false;
+		private bool isDead = false;	
 
 		private void Awake()
 		{
@@ -28,7 +28,6 @@ namespace TowersNoDragons.AI
 			{
 				isDead = true;
 				eventHandler.OnDeathEvent(currentEnemy.GetBounty());
-				Destroy(gameObject); //TODO: MAKE A DEATH ANIMATION /RAGDOLL
 			}
 
 		}
