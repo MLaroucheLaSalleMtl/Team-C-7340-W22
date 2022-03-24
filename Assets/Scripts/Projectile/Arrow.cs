@@ -15,14 +15,13 @@ namespace TowersNoDragons.Projectiles
 		[SerializeField] private float projectileSpeed = 10f;
 		[SerializeField] private float damage = 20f;
 		[SerializeField] private DamageTypes damageType = new DamageTypes();
-		[SerializeField] private Rigidbody rb = null;
 	    
 		private Transform target; 
 		private const string enemyTag = "Enemy";
 		
 		private void Update()
 		{
-			if (target == null) { Destroy(gameObject); return; }
+			if (target.GetComponent<Enemy>()== null) { Destroy(gameObject); return; }
 
 			transform.LookAt(target.position);
 			transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
@@ -31,7 +30,7 @@ namespace TowersNoDragons.Projectiles
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.CompareTag(enemyTag))
+			if (other.CompareTag(enemyTag) && target.GetComponent<Enemy>() != null)
 			{
 				other.GetComponent<Enemy>().TakeDamage(damage,damageType);
 				Destroy(gameObject);

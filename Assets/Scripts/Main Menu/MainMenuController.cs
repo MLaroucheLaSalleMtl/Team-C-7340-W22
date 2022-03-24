@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-
+using TowersNoDragons.Sounds;
 
 namespace TowersNoDragons.Menu
 {
@@ -16,8 +16,10 @@ namespace TowersNoDragons.Menu
 
         //Volume
         [Header("Volume")]
-        [SerializeField] private TMP_Text volumeValue = null;
-        [SerializeField] private Slider volumeSlider = null;
+        [SerializeField] private TMP_Text bgVolumeValue = null;
+        [SerializeField] private Slider bgVolumeSlider = null;
+        [SerializeField] private TMP_Text sfxVolumeValue = null;
+        [SerializeField] private Slider sfxVolumeSlider = null;
         [SerializeField] private float defaultVol = 0.5f;
 
 
@@ -37,33 +39,38 @@ namespace TowersNoDragons.Menu
         private Resolution[] resolutions;
 
         private void Start()
-        {
-            resolutions = Screen.resolutions;
-            resDropDown.ClearOptions();
+		{
+			InitResolution();
+
+		}
+
+		private void InitResolution()
+		{
+			resolutions = Screen.resolutions;
+			resDropDown.ClearOptions();
 
 
-            List<string> options = new List<string>();
+			List<string> options = new List<string>();
 
-            int currResIndex = 0;
+			int currResIndex = 0;
 
-            for (int i = 0; i < resolutions.Length; i++)
-            {
-                string option = resolutions[i].width + " x " + resolutions[i].height;
-                options.Add(option);
+			for (int i = 0; i < resolutions.Length; i++)
+			{
+				string option = resolutions[i].width + " x " + resolutions[i].height;
+				options.Add(option);
 
-                if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
-                {
-                    currResIndex = i;
-                }
-            }
+				if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+				{
+					currResIndex = i;
+				}
+			}
 
-            resDropDown.AddOptions(options);
-            resDropDown.value = currResIndex;
-            resDropDown.RefreshShownValue();
+			resDropDown.AddOptions(options);
+			resDropDown.value = currResIndex;
+			resDropDown.RefreshShownValue();
+		}
 
-        }
-
-        public void SetReslution(int resolutionIndex)
+		public void SetReslution(int resolutionIndex)
         {
             Resolution resolution = resolutions[resolutionIndex];
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
@@ -84,26 +91,29 @@ namespace TowersNoDragons.Menu
             Application.Quit();
         }
 
-        public void SetVol(float vol)
-        {
-            AudioListener.volume = vol;
-            volumeValue.text = vol.ToString("0.0");
+        public void Update_Background_Music_Text_Slider(float vol)
+		{
+            bgVolumeValue.text = vol.ToString("0.0");
         }
 
-        public void ApplyChanges()
+        public void Update_SFX_Music_Text_Slider(float vol)
         {
-            PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
+            sfxVolumeValue.text = vol.ToString("0.0");
         }
 
-        public void ResetToDefault(string MenuType)
+
+        public void ResetToDefault()
         {
-            if (MenuType == "Audio")
-            {
-                AudioListener.volume = defaultVol;
-                volumeSlider.value = defaultVol;
-                volumeValue.text = defaultVol.ToString("0.0");
-                ApplyChanges();
-            }
+            bgVolumeSlider.value = defaultVol;
+            bgVolumeValue.text = defaultVol.ToString("0.0");
+            SoundHandler.Instance.SetBGVolume(defaultVol);
+
+
+            sfxVolumeSlider.value = defaultVol;
+            sfxVolumeValue.text = defaultVol.ToString("0.0");
+            SoundHandler.Instance.SetSoundEffectsVolume(defaultVol);
+            //ApplyChanges(); //TODO: SAVE AND LOAD
+
         }
 
         public void SetBrightness(float brightness)

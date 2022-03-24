@@ -370,6 +370,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1350024594978929407, guid: 3a6b334b94a999049b77be2194d4cada,
         type: 3}
+      propertyPath: playrGold
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350024594978929407, guid: 3a6b334b94a999049b77be2194d4cada,
+        type: 3}
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 6137215550793907764, guid: d6bea87fad28c254197ec3894e2fe152,
@@ -523,7 +528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &1781516394
 MeshCollider:
   m_ObjectHideFlags: 0

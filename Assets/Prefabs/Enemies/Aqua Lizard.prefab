@@ -92,6 +92,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Aqua Lizard
       objectReference: {fileID: 0}
+    - target: {fileID: 6736511661610770556, guid: ba001b8db0e5ba2468d68c73ed772d50,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736511661610770556, guid: ba001b8db0e5ba2468d68c73ed772d50,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736511661610770556, guid: ba001b8db0e5ba2468d68c73ed772d50,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 6449507209633252235}
+    - target: {fileID: 6736511661610770556, guid: ba001b8db0e5ba2468d68c73ed772d50,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736511661610770556, guid: ba001b8db0e5ba2468d68c73ed772d50,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736511661610770556, guid: ba001b8db0e5ba2468d68c73ed772d50,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736511661610770556, guid: ba001b8db0e5ba2468d68c73ed772d50,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba001b8db0e5ba2468d68c73ed772d50, type: 3}
 --- !u!4 &2908243126729081615 stripped
@@ -212,6 +247,12 @@ PrefabInstance:
 --- !u!1 &5232076360762641935 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4577974229064241131, guid: 3e8bee69977fecf478d41fa0d8c0aa67,
+    type: 3}
+  m_PrefabInstance: {fileID: 642841615676898842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6449507209633252235 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 3e8bee69977fecf478d41fa0d8c0aa67,
     type: 3}
   m_PrefabInstance: {fileID: 642841615676898842}
   m_PrefabAsset: {fileID: 0}
