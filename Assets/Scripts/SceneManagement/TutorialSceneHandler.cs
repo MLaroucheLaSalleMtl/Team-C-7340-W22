@@ -8,16 +8,18 @@ namespace TowersNoDragons.SceneManagement
     public class TutorialSceneHandler : MonoBehaviour
     {
         [SerializeField] private GameObject firstMessagePanel;
+        [SerializeField] private string secondScene;
 
         void Start()
         {
+            Time.timeScale = 0f;
             firstMessagePanel.SetActive(true);
-            Time.timeScale = 0;
+            
         }
 
         public void LoadTutorialScene2()
         {
-            SceneManager.LoadScene("TutorialScene_2");
+            SceneManager.LoadScene(secondScene);
         }
 
     }

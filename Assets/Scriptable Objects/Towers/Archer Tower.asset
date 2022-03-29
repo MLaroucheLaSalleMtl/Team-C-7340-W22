@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ffca9c7993d7c40bff1c5b0be6b9e4, type: 3}
   m_Name: Archer Tower
   m_EditorClassIdentifier: 
-  towerRange: 30
+  towerRange: 300
   towerPrice: 70
-  attackDelay: 1
+  attackDelay: 3
   upgradePrice: 110

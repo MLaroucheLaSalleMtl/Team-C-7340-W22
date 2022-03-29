@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Vampire
   m_EditorClassIdentifier: 
   movementSpeed: 7
-  hp: 200
+  hp: 100
   bounty: 50
   baseArmor: 0
-  magicResistance: 0.302
+  magicResistance: 0.3

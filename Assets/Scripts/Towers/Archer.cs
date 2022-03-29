@@ -10,6 +10,7 @@ namespace TowersNoDragons.Towers
 		[SerializeField] private float rotationSpeed = 2f;
 		[SerializeField] private Arrow projectilePrefab = null;
 		[SerializeField] private Transform shootingPoint = null;
+		[SerializeField] private AudioSource audioSource = null;
 
 		private Enemy target = null;
 		private Vector3 targetDirection = new Vector3();
@@ -33,13 +34,12 @@ namespace TowersNoDragons.Towers
 		public void Attack(Enemy target)
 		{
 			this.target = target;
-			animator.SetBool("IsAttacking", true);
+			animator.SetTrigger("attack");
 		}
 
 		public void StopAttacking()
 		{
 			this.target = null;
-			animator.SetBool("IsAttacking", false);
 		}
 
 		private void RotateTowardsTarget()
@@ -54,10 +54,11 @@ namespace TowersNoDragons.Towers
 		private void AttackTarget()
 		{
 			if(target == null) { return; }
+			if (audioSource != null) { audioSource.Play(); }
+			
 			var instance = Instantiate(projectilePrefab, shootingPoint); //create an arrow
 			instance.AssignTarget(target.transform);
 			instance.transform.parent = null;
-
 		}
 
 		//make room for a new archer when upgraded

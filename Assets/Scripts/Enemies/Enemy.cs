@@ -16,9 +16,6 @@ namespace TowersNoDragons.AI
 	{
 		[SerializeField] private EnemyType enemyType = null;
 		[SerializeField] private GameObject enemyBodyModel = null;
-		//[Header("Ragdoll On Death")]
-		//[SerializeField] private GameObject NormalAgent = null;
-		//[SerializeField] private GameObject ragDoll = null; 
 
 		private Transform[] path = null;
 
@@ -130,24 +127,6 @@ namespace TowersNoDragons.AI
 			Destroy(agent);
 			Destroy(this);
 		}
-
-		#region Testing_Zone_ScorpionTower
-		//applies only to the Scorpion Tower
-		//public void GetHookedAndPulled()
-		//{
-		//	Invoke("NullParent", 1f);
-		//	agent.enabled = false;
-		//	NormalAgent.SetActive(false);
-		//	ragDoll.SetActive(true);
-			
-		//}
-
-		//private void NullParent()
-		//{
-		//	ragDoll.transform.SetParent(null);
-		//}
-
-		#endregion
 	}
 }
 
