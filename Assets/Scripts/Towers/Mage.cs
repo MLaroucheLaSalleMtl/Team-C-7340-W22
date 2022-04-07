@@ -1,4 +1,5 @@
 using TowersNoDragons.AI;
+using TowersNoDragons.Projectiles;
 using UnityEngine;
 
 namespace TowersNoDragons.Towers
@@ -53,10 +54,12 @@ namespace TowersNoDragons.Towers
 			if (target == null) { return; }
 			spawnVector = target.transform.position;
 			spawnVector.y = 14f;
-			var instance = Instantiate(iceShardsVFX, transform);
-			instance.transform.SetParent(null);
-			instance.transform.position = spawnVector;
-			instance.Play();
+
+			iceShardsVFX.transform.position = spawnVector;
+			iceShardsVFX.Stop();
+			iceShardsVFX.Play();
+			iceShardsVFX.GetComponent<IceShards>().CaptureEnemiesInRange();
+
 			target = null;
 		}
 

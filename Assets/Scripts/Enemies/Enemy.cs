@@ -26,11 +26,16 @@ namespace TowersNoDragons.AI
 		//stats
 		private float baseArmor;
 		private float magicResistance;
+		private float speed;
 		protected float hp;
 		protected float maxHp;
 
-        //cache
-        private void Awake()
+		//For debuffs
+		public NavMeshAgent Agent { get => agent; }
+		public float Speed { get => speed;  }
+
+		//cache
+		private void Awake()
 		{
 			agent = GetComponent<NavMeshAgent>();
 			eventHandler = GetComponent<EnemyEventHandler>();
@@ -79,6 +84,7 @@ namespace TowersNoDragons.AI
 		private void IntializeStats()
 		{
 			this.agent.speed = this.enemyType.MovementSpeed;
+			this.speed = this.enemyType.MovementSpeed;
 			this.baseArmor = this.enemyType.BaseArmor;
 			this.magicResistance = this.enemyType.MagicResistance;
 			this.hp = this.enemyType.Hp;

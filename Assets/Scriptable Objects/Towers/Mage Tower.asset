@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ffca9c7993d7c40bff1c5b0be6b9e4, type: 3}
   m_Name: Mage Tower
   m_EditorClassIdentifier: 
-  towerRange: 60
+  towerRange: 30
   towerPrice: 100
   attackDelay: 6
   upgradePrice: 120

@@ -6848,12 +6848,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785632242}
   m_CullTransparentMesh: 1
---- !u!82 &1880499082 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6757951584106549038, guid: 6db2b5363255e4a40adfb2ba55814b29,
-    type: 3}
-  m_PrefabInstance: {fileID: 6757951584527168716}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1889500336
 GameObject:
   m_ObjectHideFlags: 0
@@ -8732,50 +8726,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6757951584106549038, guid: 6db2b5363255e4a40adfb2ba55814b29,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6757951584106549038, guid: 6db2b5363255e4a40adfb2ba55814b29,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6757951584106549039, guid: 6db2b5363255e4a40adfb2ba55814b29,
-        type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 1880499082}
-    - target: {fileID: 6757951584106549039, guid: 6db2b5363255e4a40adfb2ba55814b29,
-        type: 3}
-      propertyPath: battleClips.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6757951584106549039, guid: 6db2b5363255e4a40adfb2ba55814b29,
-        type: 3}
-      propertyPath: mainMenuClips.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6757951584106549039, guid: 6db2b5363255e4a40adfb2ba55814b29,
-        type: 3}
-      propertyPath: battleClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 013251c2b047f564ba21cb7da2daf341, type: 3}
-    - target: {fileID: 6757951584106549039, guid: 6db2b5363255e4a40adfb2ba55814b29,
-        type: 3}
-      propertyPath: battleClips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: c96867f6777a7814a8683df6eca37afa, type: 3}
-    - target: {fileID: 6757951584106549039, guid: 6db2b5363255e4a40adfb2ba55814b29,
-        type: 3}
-      propertyPath: mainMenuClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 6c9f08c93a5296949bfc856c43a5479a, type: 3}
-    - target: {fileID: 6757951584106549039, guid: 6db2b5363255e4a40adfb2ba55814b29,
-        type: 3}
-      propertyPath: mainMenuClips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 50d66a89bc04b08469776171717573c3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6db2b5363255e4a40adfb2ba55814b29, type: 3}

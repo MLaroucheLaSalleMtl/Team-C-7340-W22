@@ -61,10 +61,10 @@ namespace TowersNoDragons.UI
 		private void InitPrices()
 		{
 			//Get tower Prices
-			archerTowerPrice = archerTower.GetTowerPrice();
-			crystalTowerPrice = crystalTower.GetTowerPrice();
-			mageTowerPrice = mageTower.GetTowerPrice();
-
+			if(archerTower != null) { archerTowerPrice = archerTower.GetTowerPrice(); }
+			if(crystalTower != null) { crystalTowerPrice = crystalTower.GetTowerPrice(); }
+			if(mageTower != null) { mageTowerPrice = mageTower.GetTowerPrice(); }
+			
 			//update prices on the UI
 			archerTowerPriceTxt.text = archerTowerPrice.ToString();
 			crystalTowerPriceTxt.text = crystalTowerPrice.ToString();

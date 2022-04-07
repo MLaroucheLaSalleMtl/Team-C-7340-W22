@@ -6370,7 +6370,8 @@ AudioSource:
   m_GameObject: {fileID: 5351589051897633832}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4741709144164527207, guid: 691d14d8fdcb9ce4e8e03edb1484d2c8,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 34aca9e3f1ade4802b9062b1380aa523, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.358
@@ -6476,6 +6477,7 @@ MonoBehaviour:
   searchRadiusOffset: 1
   spawningHeight_Y: 25
   upgradeVFX: {fileID: 4715227892998253339}
+  towerUpgradeAudioSource: {fileID: 7428580031713537919}
   destroyTowerVFX: {fileID: 198499209413112314, guid: f01c1eba69de19e44b04d8d651aaac37,
     type: 3}
   creationTowerVFX: {fileID: 198681264470032530, guid: aa8d6482d70a23445b4b2a928ed1b845,
@@ -6486,6 +6488,12 @@ MonoBehaviour:
 --- !u!4 &5351589051897633833 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5571825054969940777, guid: be440e11cbbff2245aebe264311ce830,
+    type: 3}
+  m_PrefabInstance: {fileID: 511071414533527296}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &7428580031713537919 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6917580225026521215, guid: be440e11cbbff2245aebe264311ce830,
     type: 3}
   m_PrefabInstance: {fileID: 511071414533527296}
   m_PrefabAsset: {fileID: 0}

@@ -18,9 +18,10 @@ namespace TowersNoDragons.Towers
 		[SerializeField] private LayerMask enemyLayer = new LayerMask(); //layers to collide with
 		[SerializeField] private float searchRadiusOffset = 1f; //offset collision to compensate enemy radius of collision
 		[Header("Spawning")]
-		[SerializeField] float spawningHeight_Y = 4.8f; //based on the tower height, determine the required height to be placed above ground								 
+		[SerializeField] private float spawningHeight_Y = 4.8f; //based on the tower height, determine the required height to be placed above ground						 
 		[Header("Upgrades")]
 		[SerializeField] private ParticleSystem upgradeVFX = null; //tower upgrade vfx
+		[SerializeField] private AudioSource towerUpgradeAudioSource = null;
 		[Header("VFX")]
 		[SerializeField] private ParticleSystem destroyTowerVFX = null;
 		[SerializeField] private ParticleSystem creationTowerVFX = null;
@@ -205,6 +206,8 @@ namespace TowersNoDragons.Towers
 			//you must override this method / add to it more functionalities for every tower
 			currentTowerLevel++;
 			upgradeVFX.Play();
+			towerUpgradeAudioSource.Play();
+
 		}
 		
 		/// <summary>

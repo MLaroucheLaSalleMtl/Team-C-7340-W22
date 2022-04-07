@@ -44,8 +44,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -5878365896800685809, guid: 691d14d8fdcb9ce4e8e03edb1484d2c8,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 18fa7f85faaee95408b6f749a5990a23, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -143,3 +143,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 691d14d8fdcb9ce4e8e03edb1484d2c8, type: 2}
+  audioSource: {fileID: 6757951584106549038}
+  mainMenuClips:
+  - {fileID: 8300000, guid: 6c9f08c93a5296949bfc856c43a5479a, type: 3}
+  - {fileID: 8300000, guid: 50d66a89bc04b08469776171717573c3, type: 3}
+  battleClips:
+  - {fileID: 8300000, guid: 013251c2b047f564ba21cb7da2daf341, type: 3}
+  - {fileID: 8300000, guid: c96867f6777a7814a8683df6eca37afa, type: 3}
+  loseClips: []
+  winClips: []

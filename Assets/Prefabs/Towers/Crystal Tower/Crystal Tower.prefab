@@ -234,6 +234,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2851846058280622279, guid: be440e11cbbff2245aebe264311ce830,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4654892088464280941, guid: be440e11cbbff2245aebe264311ce830,
         type: 3}
       propertyPath: m_RootOrder
@@ -307,6 +312,103 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2175189263185571120}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &3527453002847331808
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6015905586396374552}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -4741709144164527207, guid: 691d14d8fdcb9ce4e8e03edb1484d2c8,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 641dbf12ce26baa4ba851c2ff0f04d2b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &3517057904567035277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,21 +428,29 @@ MonoBehaviour:
   searchRadiusOffset: 1
   spawningHeight_Y: 25
   upgradeVFX: {fileID: 7680436515745845339}
+  towerUpgradeAudioSource: {fileID: 9092764952142517583}
   destroyTowerVFX: {fileID: 198499209413112314, guid: f01c1eba69de19e44b04d8d651aaac37,
     type: 3}
   creationTowerVFX: {fileID: 198681264470032530, guid: aa8d6482d70a23445b4b2a928ed1b845,
     type: 3}
   crystalTowerMeshRenderer: {fileID: 7554110573018593295}
   lineRenderer: {fileID: 2548011332464366712}
-  damage: 0.25
+  damage: 20
   damageType: 1
+  audioSource: {fileID: 3527453002847331808}
   levelTwoLaserColor: {fileID: 2100000, guid: 6f06b7fc8c59d844abfb0538efcd00fd, type: 2}
-  levelTwoDamage: 0.15
+  levelTwoDamage: 10
   hitEffectVFX: {fileID: 336171845950373177}
   hitEffectVFXRenderer: {fileID: 336171845950373176}
 --- !u!4 &6015905586396374553 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5571825054969940777, guid: be440e11cbbff2245aebe264311ce830,
+    type: 3}
+  m_PrefabInstance: {fileID: 2175189263185571120}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &9092764952142517583 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6917580225026521215, guid: be440e11cbbff2245aebe264311ce830,
     type: 3}
   m_PrefabInstance: {fileID: 2175189263185571120}
   m_PrefabAsset: {fileID: 0}

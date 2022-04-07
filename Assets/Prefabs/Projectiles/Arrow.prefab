@@ -50,7 +50,6 @@ MonoBehaviour:
   projectileSpeed: 55
   damage: 100
   damageType: 0
-  rb: {fileID: 6046015444396689752}
 --- !u!65 &845654584560521037
 BoxCollider:
   m_ObjectHideFlags: 0

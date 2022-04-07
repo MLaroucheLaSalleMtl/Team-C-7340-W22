@@ -12,15 +12,15 @@ namespace TowersNoDragons.Towers
 	public class CrystalTower : Tower
 	{
 		[Header("Crystal Tower Prefs")]
-		
 		[SerializeField] private MeshRenderer crystalTowerMeshRenderer = null;
 		[SerializeField] private LineRenderer lineRenderer = null;
-		[SerializeField] private float damage = 5f; //per frame
+		[SerializeField] private float damage = 3f;
 		[SerializeField] private DamageTypes damageType = DamageTypes.Magical;
+		[SerializeField] private AudioSource audioSource = null;
 
 		[Header("Upgrades")]
 		[SerializeField] private Material levelTwoLaserColor = null;
-		[SerializeField] private float levelTwoDamage = 0.02f;
+		[SerializeField] private float levelTwoDamage = 1f;
 		
 		[Header("VFX")]
 		[SerializeField] private ParticleSystem hitEffectVFX = null;
@@ -29,13 +29,17 @@ namespace TowersNoDragons.Towers
 		protected override void AttackTarget()
 		{
 			if(base.target == null) { StopAttacking(); }
+			if(audioSource != null && !audioSource.isPlaying)
+			{
+				audioSource.Play();
+			}
 			lineRenderer.enabled = true;
 			lineRenderer.SetPosition(0, lineRenderer.transform.position); //start pos
 			lineRenderer.SetPosition(1, new Vector3(base.target.transform.position.x, (base.target.transform.position.y + base.enemyOffset), base.target.transform.position.z)); //target pos /end pos
 			hitEffectVFX.transform.position = new Vector3(base.target.transform.position.x,(base.target.transform.position.y + base.enemyOffset), base.target.transform.position.z);
 			if (!hitEffectVFX.isEmitting) { hitEffectVFX.Play(); }
 			
-			base.target.TakeDamage(damage, damageType);
+			base.target.TakeDamage(damage * Time.deltaTime, damageType);
 		}
 
 		protected override void StopAttacking()

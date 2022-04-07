@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HornedWerewolf
   m_EditorClassIdentifier: 
   movementSpeed: 3
-  hp: 0
+  hp: 1000
   bounty: 1000
   baseArmor: 0.5
   magicResistance: 0.25
