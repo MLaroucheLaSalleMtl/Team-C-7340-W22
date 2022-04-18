@@ -30,11 +30,13 @@ namespace TowersNoDragons.Towers
 		//Attacking variables
 		protected float enemyOffset = 1.5f;
 		protected Enemy target = null;
+		protected bool isGoldTower = false;
 
 		private Collider[] enemyCollided;
 		private bool isAttacking = false;
 		private float attackTimer = 0f; //timer to track the attack cooldown
 		private bool canAttack = false;
+		
 		
 
 		//Building vars
@@ -74,6 +76,7 @@ namespace TowersNoDragons.Towers
 
 		private void FixedUpdate()
 		{
+			if (isGoldTower) { return; }
 			if (!canAttack) { return; } //not fully spawned yet
 			if (target == null)
 			{

@@ -8,8 +8,7 @@ namespace TowersNoDragons.SceneManagement
     public class SceneHandler : MonoBehaviour
     {
         [SerializeField] private GameObject firstMessagePanel;
-        [SerializeField] private string sceneToLoad;
-        [SerializeField] [Range(0, 1)] private float setTimeScaleOnStart;
+        [SerializeField] [Range(0, 1)] private int setTimeScaleOnStart;
 
         private int currentSceneIndex;
 
@@ -21,9 +20,9 @@ namespace TowersNoDragons.SceneManagement
             if(firstMessagePanel != null) { firstMessagePanel.SetActive(true); }
         }
 
-        public void LoadScene()
+        public void LoadScene(string scene)
         {
-            SceneManager.LoadScene(sceneToLoad);
+            SceneManager.LoadScene(scene);
         }
 
         public void ReloadCurrentScene()

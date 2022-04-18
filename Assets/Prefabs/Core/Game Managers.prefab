@@ -49,10 +49,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed926dabad9007d4eafad3273defe372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedGameObject: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 1536
+  buildTowerCursorTexture: {fileID: 0}
+  defaultCursorTexture: {fileID: 0}
 --- !u!114 &8201575018086040059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +84,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4811ecce23904f44796c599f69db0500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstMessagePanel: {fileID: 0}
+  setTimeScaleOnStart: 0
 --- !u!114 &1937123178
 MonoBehaviour:
   m_ObjectHideFlags: 0

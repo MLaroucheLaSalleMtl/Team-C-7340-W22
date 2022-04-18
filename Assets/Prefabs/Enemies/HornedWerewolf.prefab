@@ -12,6 +12,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 176362219411717970, guid: ba001b8db0e5ba2468d68c73ed772d50,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 176362219411717970, guid: ba001b8db0e5ba2468d68c73ed772d50,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3406108041923048739, guid: ba001b8db0e5ba2468d68c73ed772d50,
         type: 3}
       propertyPath: m_RootOrder
@@ -72,6 +82,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HornedWerewolf
       objectReference: {fileID: 0}
+    - target: {fileID: 5410510928274867069, guid: ba001b8db0e5ba2468d68c73ed772d50,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6736511661610770556, guid: ba001b8db0e5ba2468d68c73ed772d50,
         type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
@@ -106,6 +121,16 @@ PrefabInstance:
         type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959559779957529348, guid: ba001b8db0e5ba2468d68c73ed772d50,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959559779957529348, guid: ba001b8db0e5ba2468d68c73ed772d50,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 22.33
       objectReference: {fileID: 0}
     - target: {fileID: 8382644745924692225, guid: ba001b8db0e5ba2468d68c73ed772d50,
         type: 3}
@@ -151,6 +176,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ab0bceb3b87b67c49b177d56eb0e49a0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ab0bceb3b87b67c49b177d56eb0e49a0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ab0bceb3b87b67c49b177d56eb0e49a0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ab0bceb3b87b67c49b177d56eb0e49a0,
         type: 3}
@@ -211,6 +251,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 72b23b47bfc6f664a9f5e434418b4073, type: 2}
+      objectReference: {fileID: 9100000, guid: be79e976372cdb64db0187acb3d4a83a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab0bceb3b87b67c49b177d56eb0e49a0, type: 3}
