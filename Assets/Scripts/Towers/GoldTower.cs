@@ -1,43 +1,58 @@
 using UnityEngine;
-using TMPro;
-using System;
+using UnityEngine.UI;
+using TowersNoDragons.Economy;
 
-namespace TowersNoDragons.Economy
+namespace TowersNoDragons.Towers
 {
-	public class GoldTower : MonoBehaviour
+	public class GoldTower : Tower
 	{
-		public event Action onGoldExchange;
-		[SerializeField] private int playrGold = 1000;
-		[SerializeField] private TMP_Text PlayerGoldText = null;
-        private float TimerTimeEnd = 5f;
+		
+        [SerializeField] private int goldAmount = 500;
+		[SerializeField] private Image collectGoldBtn = null;
+		[SerializeField] private float goldGenerateTimer = 10f;
+		
+        private float timer = 0f;
 
-        private void Start()
-        {
-            RefreshGold();
-        }
 
-        private void RefreshGold()
-        {
-			PlayerGoldText.text = playrGold.ToString();
-        }
+		private void Awake()
+		{
+			base.isGoldTower = true;
+		}
 
-		private void AddGold()
+		public void GoldToAdd()
         {
-            playrGold += 200;
-            RefreshGold();
-        }
+            EconomyHandler.Instance.AddGold(goldAmount);
+			timer = 0f;
+			collectGoldBtn.gameObject.SetActive(false);
+
+		}
 
         private void Update()
         {
-            TimerTimeEnd -= 1 * Time.deltaTime;
-            if (TimerTimeEnd <= 0)
+            timer += Time.deltaTime;
+			Mathf.Clamp(timer, 0f, goldGenerateTimer);
+            if (timer >= goldGenerateTimer)
             {
-                AddGold();
-                TimerTimeEnd = 10f;
-            }
-            onGoldExchange?.Invoke();
+				collectGoldBtn.gameObject.SetActive(true);
+			}
         }
-    }
+
+		protected override void AttackTarget()
+		{
+			//
+		}
+
+		protected override void StopAttacking()
+		{
+			//
+		}
+
+		public override void UpgradeTower()
+		{
+			base.UpgradeTower();
+			goldAmount += 50;
+		}
+	}
 }
 
 

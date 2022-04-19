@@ -5197,6 +5197,7 @@ GameObject:
   - component: {fileID: 1403206804}
   - component: {fileID: 1403206803}
   - component: {fileID: 1403206802}
+  - component: {fileID: 1403206805}
   m_Layer: 5
   m_Name: Tutorial Button
   m_TagString: Untagged
@@ -5268,16 +5269,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: TutorialButton
-        m_Mode: 1
+      - m_Target: {fileID: 1403206805}
+        m_TargetAssemblyTypeName: TowersNoDragons.SceneManagement.SceneHandler, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Tutorial 1
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1823129262}
@@ -5389,6 +5390,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403206800}
   m_CullTransparentMesh: 1
+--- !u!114 &1403206805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403206800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4811ecce23904f44796c599f69db0500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstMessagePanel: {fileID: 0}
+  setTimeScaleOnStart: 0
 --- !u!1 &1415173464
 GameObject:
   m_ObjectHideFlags: 0
@@ -8955,5 +8970,20 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.463
       objectReference: {fileID: 0}
+    - target: {fileID: 6757951584106549039, guid: 6db2b5363255e4a40adfb2ba55814b29,
+        type: 3}
+      propertyPath: mainMenuClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757951584106549039, guid: 6db2b5363255e4a40adfb2ba55814b29,
+        type: 3}
+      propertyPath: mainMenuClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c9f08c93a5296949bfc856c43a5479a, type: 3}
+    - target: {fileID: 6757951584106549039, guid: 6db2b5363255e4a40adfb2ba55814b29,
+        type: 3}
+      propertyPath: mainMenuClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c9f08c93a5296949bfc856c43a5479a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6db2b5363255e4a40adfb2ba55814b29, type: 3}

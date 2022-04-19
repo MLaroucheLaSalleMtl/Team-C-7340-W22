@@ -18,6 +18,7 @@ namespace TowersNoDragons.UI
 		[SerializeField] private Tower archerTower = null;
 		[SerializeField] private Tower crystalTower = null;
 		[SerializeField] private Tower mageTower = null;
+		[SerializeField] private Tower goldTower = null;
 
 		[Header("Tower Prices and buttons")]
 		[SerializeField] private Button archerTowerbtn = null;
@@ -26,6 +27,8 @@ namespace TowersNoDragons.UI
 		[SerializeField] private TMP_Text crystalTowerPriceTxt = null;
 		[SerializeField] private Button mageTowerbtn = null;
 		[SerializeField] private TMP_Text mageTowerPriceTxt = null;
+		[SerializeField] private Button goldTowerbtn = null;
+		[SerializeField] private TMP_Text goldTowerPriceTxt = null;
 
 
 		private Dictionary<Button, int> buildButtons = new Dictionary<Button, int>(); //library of towers
@@ -39,6 +42,7 @@ namespace TowersNoDragons.UI
 		private int archerTowerPrice = 0;
 		private int crystalTowerPrice = 0;
 		private int mageTowerPrice = 0;
+		private int goldTowerPrice = 0;
 
 		private void Start()
 		{
@@ -64,16 +68,19 @@ namespace TowersNoDragons.UI
 			if(archerTower != null) { archerTowerPrice = archerTower.GetTowerPrice(); }
 			if(crystalTower != null) { crystalTowerPrice = crystalTower.GetTowerPrice(); }
 			if(mageTower != null) { mageTowerPrice = mageTower.GetTowerPrice(); }
+			if(goldTower != null) { goldTowerPrice = goldTower.GetTowerPrice(); }
 			
 			//update prices on the UI
 			archerTowerPriceTxt.text = archerTowerPrice.ToString();
 			crystalTowerPriceTxt.text = crystalTowerPrice.ToString();
 			mageTowerPriceTxt.text = mageTowerPrice.ToString();
+			goldTowerPriceTxt.text = goldTowerPrice.ToString();
 
 			//add tower buttons and their prices to the library
 			buildButtons.Add(archerTowerbtn, archerTowerPrice);
 			buildButtons.Add(crystalTowerbtn, crystalTowerPrice);
 			buildButtons.Add(mageTowerbtn, mageTowerPrice);
+			buildButtons.Add(goldTowerbtn, goldTowerPrice);
 		}
 
 		private void UpdateButtonState()
@@ -131,6 +138,19 @@ namespace TowersNoDragons.UI
 				EconomyHandler.Instance.SubtractGold(mageTower.GetTowerPrice());
 			}
 		}
+
+		public void BuildGoldTower()
+		{
+			if (goldTower.GetTowerPrice() <= EconomyHandler.Instance.GetCurrentGold())
+			{
+				var instance = Instantiate(goldTower, spawnPos, Quaternion.identity);
+				instance.GetComponent<Tower>().AssignBuildingPlace(this);
+				NotifyTowerCreationSmoke(instance);
+				gameObject.SetActive(false);
+				EconomyHandler.Instance.SubtractGold(goldTower.GetTowerPrice());
+			}
+		}
+
 
 		public void Select()
 		{
